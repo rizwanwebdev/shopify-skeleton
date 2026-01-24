@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    {% render 'css-variables' %}
+
+    <style>
+      {{ settings.type_primary_font | font_face }}
+
+      :root {
+        --font-primary-family: {{ settings.type_primary_font.family }}, {{ settings.type_primary_font.fallback_families }};
+        --font-primary-style: {{ settings.type_primary_font.style }};
+        --font-primary-weight: {{ settings.type_primary_font.weight }};
+      }
+
+      body {
+        font-family: var(--font-primary-family);
+        font-style: var(--font-primary-style);
+        font-weight: var(--font-primary-weight);
+      }
+    </style>
+
+    {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
+
+    {% render 'meta-tags' %}
+
+    {{ content_for_header }}
+  </head>
+
+  <body>
+    {% sections 'header-group' %}
+
+    {{ content_for_layout }}
+
+    {% sections 'footer-group' %}
+  </body>
+</html>
