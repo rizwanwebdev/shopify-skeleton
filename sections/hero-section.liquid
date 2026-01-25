@@ -1,0 +1,26 @@
+<div class="hero-grid">
+<div class="hero-col-1">
+    <h2>Professional Level Teeth Cleaing</h2>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam repellendus tempora temporibus nihil assumenda ratione ipsa consectetur repudiandae illo autem.</p>
+    <div class="hero-star-rating">
+        <span>⭐⭐⭐⭐⭐</span>
+        <span>4.9/5 (2847 Reviews)</span>
+        <span>
+            <i>🚚</i>
+            <span>Free Shipping</span>
+        </span>
+    </div>
+</div>
+<div class="hero-col-2">
+    <div>
+        <img src="{{ "hero-image.webp"| asset_url }}" alt="smilebright" width="100%" height="auto">
+    </div>
+</div>
+
+</div>
+{% stylesheet %}
+    .hero-grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+{% endstylesheet %}

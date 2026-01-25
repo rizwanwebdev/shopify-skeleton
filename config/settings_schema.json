@@ -65,14 +65,38 @@
       {
         "type": "color",
         "id": "background_color",
-        "default": "#FFFFFF",
+        "default": "#f7fafc",
         "label": "t:labels.background"
       },
       {
         "type": "color",
         "id": "foreground_color",
-        "default": "#333333",
+        "default": "#0f172a",
         "label": "t:labels.foreground"
+      },
+      {
+        "type": "color",
+        "id": "primary_color",
+        "default": "#4a7dbc",
+        "label": "t:labels.primary"
+      },
+      {
+        "type": "color",
+        "id": "secondry_color",
+        "default": "#7683a1",
+        "label": "t:labels.secondry"
+      },
+      {
+        "type": "color",
+        "id": "footer_color",
+        "default": "#0f172a",
+        "label": "t:labels.footer"
+      },
+      {
+        "type": "color",
+        "id": "cards_color",
+        "default": "#d0d6dc",
+        "label": "t:labels.cards"
       },
       {
         "type": "range",
