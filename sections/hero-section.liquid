@@ -1,19 +1,20 @@
 <div class="hero-grid">
 <div class="hero-col-1">
-    <h2>{{ section.settings.hero_heading_text }}</h2>
+    <h1>{{ section.settings.hero_heading_text }}</h1>
     <p>{{ section.settings.hero_heading_para }}</p>
     <div class="hero-star-rating">
-        <span>⭐⭐⭐⭐⭐⭐⭐⭐</span>
-        <span>4.9/5 (2847 Reviews)</span>
-        <span>
-            <i>🚚</i>
-            <span>Free Shipping</span>
-        </span>
+        <span>{{section.settings.hero_rating}}</span>
+        <span>{{section.settings.hero_shipping}}</span>
+        <span>{{section.settings.hero_recomended}}</span>
+    </div>
+    <div class="hero-btns">
+    <a class="btn btn-solid" href="{{ section.settings.hero_product.url }}">{{ section.settings.hero_product_btn_text }}</a>
+    <a class="btn btn-outline" href="{{ section.settings.hero_use_btn_link }}">{{ section.settings.hero_use_btn_text }}</a>
     </div>
 </div>
 <div class="hero-col-2">
-    <div>
-        <img src="{{section.settings.hero_background_image | image_url}}" alt="smilebright" width="100%" height="auto">
+    <div class="hero-img">
+        <img src="{{section.settings.hero_background_image | image_url}}" alt="smilebright" width="100%" height="auto" loading="eager" fetchpriority="high">
     </div>
 </div>
 
@@ -22,10 +23,65 @@
     .hero-grid{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        padding-block: 80px;
     }
     .hero-col-1{
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        gap: 25px;
+        padding: 20px;
+    }
+    .hero-col-2{
+    padding: 20px;
+    }
+     .hero-col-2 .hero-img{
+    border-radius: 20px;
+    box-shadow: 0 0 10px #0000004f;
+    overflow: hidden;
+    }
+    .hero-star-rating{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .hero-btns{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+     align-items: center;
+
+    }
+    .btn{
+      padding: 10px 16px;
+      transition: all .3s;
+      border-radius: 6px;
+      border: 2px solid var(--color-primary);
+    }
+    .btn-outline{
+      color: var(--color-primary);
+    }
+    .btn-solid{
+      color: var(--color-background);
+      background: var(--color-primary);
+    }
+    .btn-outline:hover
+    {
+      color: var(--color-foreground);
+      border-color: var(--color-foreground);
+    }
+    .btn-solid:hover{
+      box-shadow: 0 0 5px var(--color-primary);
+      border-color: var(--color-foreground);
+    }
+    @media (max-width: 767px) {
+      .hero-grid{
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .hero-col-1{
+        order: 2;
+      }
     }
 {% endstylesheet %}
 {% comment %} commented as dont not block for now "blocks": [{ "type": "@theme" }], {% endcomment %}
@@ -47,7 +103,42 @@
      {
       "type": "text",
       "id": "hero_heading_para",
-      "label": "t:labels.text"
+      "label": "t:labels.hero_heading_para"
+    },
+    {
+      "type": "text",
+      "id": "hero_rating",
+      "label": "t:labels.hero_rating"
+    },
+      {
+      "type": "text",
+      "id": "hero_shipping",
+      "label": "t:labels.hero_shipping"
+    },
+      {
+      "type": "text",
+      "id": "hero_recomended",
+      "label": "t:labels.hero_recomended"
+    },
+    {
+      "type": "product",
+      "id": "hero_product",
+      "label": "t:labels.hero_product"
+    },
+    {
+      "type": "text",
+      "id": "hero_product_btn_text",
+      "label": "t:labels.hero_product_btn_text"
+    },
+    {
+      "type": "text",
+      "id": "hero_use_btn_text",
+      "label": "t:labels.hero_use_btn_text"
+    },
+    {
+      "type": "url",
+      "id": "hero_use_btn_link",
+      "label": "t:labels.hero_use_btn_link"
     }
   ],
   "presets": [

@@ -25,8 +25,12 @@
 </header>
 
 {% stylesheet %}
+div:has(header){
+    box-shadow: 0 1px 4px #00000038;
+
+}
   header {
-    height: 5rem;
+    height: 4rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,7 +38,12 @@
   header a {
     position: relative;
     text-decoration: none;
-    color: var(--color-foreground);
+     color: var(--color-forground);
+     transition: all .3s;
+  }
+    .header__menu a:hover{
+     color: var(--color-primary);
+   
   }
   header a sup {
     position: absolute;
@@ -50,11 +59,7 @@
     display: flex;
     gap: 1rem;
   }
-  @media (max-width:600px){
-    header .header__menu{
-      display: none;
-    }
-  }
+ 
 {% endstylesheet %}
 
 {% schema %}

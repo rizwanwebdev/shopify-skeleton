@@ -37,6 +37,11 @@
     "alignment": "Alignment",
     "background": "Background",
     "foreground": "Foreground",
+    "primary": "Primary",
+    "secondary": "Secondary",
+    "danger": "Danger",
+    "cards_bg": "Cards Background",
+    "footer_color": "Footer Color",
     "grid_gap": "Grid spacing",
     "grid_item_width": "Grid item width",
     "input_corner_radius": "Input corner radius",
@@ -48,7 +53,16 @@
     "show_payment_icons": "Show payment icons",
     "text_style": "Text style",
     "text": "Text",
-    "use_custom_inter": "Use custom Inter font"
+    "heading": "Enter Heading Text Here",
+    "hero_heading_para": "More Info",
+    "use_custom_inter": "Use custom Inter font",
+    "hero_rating": "Enter Rating in Start and text",
+    "hero_shipping": "Shiiping Free etc",
+    "hero_recomended": "Recomended By",
+    "hero_product": "Pick A Product",
+    "hero_product_btn_text": "Enter Buy Button Text",
+    "hero_use_btn_link": "And Link For Guide",
+    "hero_use_btn_text": "Add Guide Btn Text"
   },
   "options": {
     "alignment": {
