@@ -83,7 +83,7 @@
       {
         "type": "color",
         "id": "secondary_color",
-        "default": "#7683a1",
+        "default": "#6D6F76",
         "label": "t:labels.secondary"
       },
       {
