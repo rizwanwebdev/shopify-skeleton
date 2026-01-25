@@ -15,6 +15,12 @@
         "content": "t:general.fonts"
       },
       {
+        "type": "checkbox",
+        "id": "use_custom_inter",
+        "label": "t:general.typography.use_custom_inter",
+        "default": true
+      },
+      {
         "type": "font_picker",
         "id": "type_primary_font",
         "default": "inter_n4",
