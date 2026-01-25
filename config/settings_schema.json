@@ -1,7 +1,7 @@
 [
   {
-    "name": "SmileBright",
-    "theme_name": "SmileBright",
+    "name": "theme_info",
+    "theme_name": "Skeleton",
     "theme_version": "0.1.0",
     "theme_author": "Shopify",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
@@ -17,13 +17,13 @@
       {
         "type": "checkbox",
         "id": "use_custom_inter",
-        "label": "t:general.typography.use_custom_inter",
+        "label": "t:labels.use_custom_inter",
         "default": true
       },
       {
         "type": "font_picker",
         "id": "type_primary_font",
-        "default": "inter_n4",
+        "default": "work_sans_n4",
         "label": "t:general.primary"
       }
     ]
@@ -65,38 +65,14 @@
       {
         "type": "color",
         "id": "background_color",
-        "default": "#f7fafc",
+        "default": "#FFFFFF",
         "label": "t:labels.background"
       },
       {
         "type": "color",
         "id": "foreground_color",
-        "default": "#0f172a",
+        "default": "#333333",
         "label": "t:labels.foreground"
-      },
-      {
-        "type": "color",
-        "id": "primary_color",
-        "default": "#4a7dbc",
-        "label": "t:labels.primary"
-      },
-      {
-        "type": "color",
-        "id": "secondry_color",
-        "default": "#7683a1",
-        "label": "t:labels.secondry"
-      },
-      {
-        "type": "color",
-        "id": "footer_color",
-        "default": "#0f172a",
-        "label": "t:labels.footer"
-      },
-      {
-        "type": "color",
-        "id": "cards_color",
-        "default": "#d0d6dc",
-        "label": "t:labels.cards"
       },
       {
         "type": "range",

@@ -1,9 +1,9 @@
 <div class="hero-grid">
 <div class="hero-col-1">
-    <h2>Professional Level Teeth Cleaing</h2>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam repellendus tempora temporibus nihil assumenda ratione ipsa consectetur repudiandae illo autem.</p>
+    <h2>{{ section.settings.hero_heading_text }}</h2>
+    <p>{{ section.settings.hero_heading_para }}</p>
     <div class="hero-star-rating">
-        <span>⭐⭐⭐⭐⭐</span>
+        <span>⭐⭐⭐⭐⭐⭐⭐⭐</span>
         <span>4.9/5 (2847 Reviews)</span>
         <span>
             <i>🚚</i>
@@ -13,7 +13,7 @@
 </div>
 <div class="hero-col-2">
     <div>
-        <img src="{{ "hero-image.webp"| asset_url }}" alt="smilebright" width="100%" height="auto">
+        <img src="{{section.settings.hero_background_image | image_url}}" alt="smilebright" width="100%" height="auto">
     </div>
 </div>
 
@@ -23,4 +23,42 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
+    .hero-col-1{
+        display: flex;
+        flex-direction: column;
+    }
 {% endstylesheet %}
+{% comment %} commented as dont not block for now "blocks": [{ "type": "@theme" }], {% endcomment %}
+{% schema %}
+    {
+  "name": "Hero Section",
+  
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_background_image",
+      "label": "t:labels.background"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading_text",
+      "label": "t:labels.heading"
+    },
+     {
+      "type": "text",
+      "id": "hero_heading_para",
+      "label": "t:labels.text"
+    }
+  ],
+  "presets": [
+  {
+    "name": "Hero Section",
+    "settings": {
+      "hero_heading_text": "Professional Level Teeth Cleaning",
+      "hero_heading_para": "Dentist-grade results at home"
+    }
+  }
+]
+
+}
+{% endschema %}

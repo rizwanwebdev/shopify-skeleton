@@ -2,49 +2,7 @@
 <html lang="{{ request.locale.iso_code }}">
   <head>
     {% render 'css-variables' %}
-    {% stylesheet %}
-    @font-face {
-    font-family: "Inter";
-    src: url("/assets/Inter_18pt-Regular.woff2") format("woff2");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-     }
-     @font-face {
-    font-family: "Inter";
-    src: url("/assets/Inter_18pt-Bold.woff2") format("woff2");
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-     }
-     @font-face {
-    font-family: "Inter";
-    src: url("/assets/Inter_18pt-SemiBold.woff2") format("woff2");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-     }
-    {% endstylesheet %}
-
-    <style>
-
-      :root {
-        {% if settings.use_custom_inter %}
-          --font-primary-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        {% else %}
-          --font-primary-family:{{ settings.type_primary_font.family }}, {{ settings.type_primary_font.fallback_families }}
-          --font-primary-style: {{ settings.type_primary_font.style }};
-          --font-primary-weight: {{ settings.type_primary_font.weight }};
-        {% endif %}
-      }
-
-      body {
-        font-family: var(--font-primary-family);
-        font-style: var(--font-primary-style);
-        font-weight: var(--font-primary-weight);
-      }
-    </style>
-
+    
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
 
     {% render 'meta-tags' %}
