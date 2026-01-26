@@ -1,0 +1,48 @@
+{% doc %}
+  Renders the header logo linking to the home page.
+
+  @param {image} logo_image - The logo image object to render.
+  @param {number} [logo_image_width] - Optional explicit logo width.
+  @param {number} [logo_image_height] - Optional explicit logo height.
+
+  @example
+  {% render 'header-logo',
+    logo_image: section.settings.logo_image,
+    logo_image_width: 160,
+    logo_image_height: 40
+  %}
+{% enddoc %}
+
+<a href="{{ routes.root_url }}" class="header__logo-link" aria-label="{{ shop.name | escape }}">
+  {% if logo_image %}
+    {{ logo_image
+      | image_url: width: logo_image_width
+      | image_tag:
+        class: 'header__title',
+        width: logo_image_width,
+        height: logo_image_height,
+        alt: shop.name
+    }}
+  {% else %}
+    <span class="header__title-text">{{ shop.name }}</span>
+  {% endif %}
+</a>
+
+{% stylesheet %}
+  .header__logo-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .header__title {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .header__title-text {
+    font-weight: 600;
+    font-size: 1.25rem;
+  }
+{% endstylesheet %}

@@ -142,6 +142,12 @@ span {
   line-height: var(--line-height-body);
   color: var(--color-secondary);
 }
+.medium {
+  font-size: 15px;
+}
+.small {
+  font-size: 14px;
+}
 
 /* Tablet: 768px–1024px */
 @media (max-width: 1024px) and (min-width: 768px) {

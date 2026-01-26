@@ -1,0 +1,53 @@
+<div class="mistake-blocks">
+    <div class="mistakes-heading">
+        <span>{{ "icon-circle-x.svg" | inline_asset_content }}</span>
+        <h3>{{ block.settings.mistakes_heading }}</h3>
+    </div>
+    {% comment %} {% for block in blocks %}
+        
+    {% endfor %} {% endcomment %}
+
+
+</div>
+{% stylesheet %}
+.mistake-blocks{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}   
+    .mistakes-block,
+    .mistakes-heading{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+    .mistakes-heading span{
+        padding: 7px;
+        background: var(--color-cards);
+        color: var(--color-danger);
+        border-radius: 10px;
+    }
+{% endstylesheet %}
+
+{% schema %}
+   {
+    "name": "blocks",
+    "blocks": [{ "type": "@theme" }],
+    "settings": [
+        {
+        "type": "text",
+        "id": "mistakes_heading",
+        "label": "t:labels.heading"
+        }
+        
+    ],
+    "presets": [
+        {
+        "name": "blocks",
+        "settings": {
+            "mistakes_heading":"Common Problems",
+        }
+    }
+    ]
+    }
+{% endschema %}

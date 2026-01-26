@@ -100,9 +100,15 @@
       },
       {
         "type": "color",
-        "id": "danger",
+        "id": "danger_color",
         "default": "#E92A3B",
         "label": "t:labels.danger"
+      },
+      {
+        "type": "color",
+        "id": "netural_color",
+        "default": "#ffffff",
+        "label": "t:labels.netural"
       },
       {
         "type": "range",

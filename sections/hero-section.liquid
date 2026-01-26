@@ -3,18 +3,42 @@
     <h1>{{ section.settings.hero_heading_text }}</h1>
     <p>{{ section.settings.hero_heading_para }}</p>
     <div class="hero-star-rating">
-        <span>{{section.settings.hero_rating}}</span>
-        <span>{{section.settings.hero_shipping}}</span>
-        <span>{{section.settings.hero_recomended}}</span>
+        <span>
+          {{section.settings.hero_rating}}
+        </span>
+        <span class="hero-rating-icons">
+        <span class="icon">{{ 'icon-truck.svg' | inline_asset_content }}</span>
+          <span>{{section.settings.hero_shipping}}</span>
+        </span>
+        <span class="hero-rating-icons">
+          <span class="icon">{{ 'icon-award.svg' | inline_asset_content }}</span>
+          <span>{{section.settings.hero_recomended}}</span></span>
     </div>
     <div class="hero-btns">
-    <a class="btn btn-solid" href="{{ section.settings.hero_product.url }}">{{ section.settings.hero_product_btn_text }}</a>
-    <a class="btn btn-outline" href="{{ section.settings.hero_use_btn_link }}">{{ section.settings.hero_use_btn_text }}</a>
+      <a class="btn btn-solid" href="{{ section.settings.hero_product.url }}">{{ section.settings.hero_product_btn_text }}</a>
+      <a class="btn btn-outline" href="{{ section.settings.hero_use_btn_link }}">{{ section.settings.hero_use_btn_text }}</a>
     </div>
 </div>
 <div class="hero-col-2">
     <div class="hero-img">
-        <img src="{{section.settings.hero_background_image | image_url}}" alt="smilebright" width="100%" height="auto" loading="eager" fetchpriority="high">
+  {% if section.settings.hero_background_image %}
+    {{ section.settings.hero_background_image
+      | image_url: width: 1600
+      | image_tag:
+        alt: 'sections.hero.hero_background_image_alt',
+        loading: 'eager',
+        fetchpriority: 'high'
+    }}
+  {% else %}
+    {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero-img__placeholder' }}
+  {% endif %}
+</div>
+    <div class="hero-img-badge">
+      <span class="badge-icon">{{ 'icon-truck.svg' | inline_asset_content }}</span>
+      <span>
+        <h4>Free Shipping</h4>
+        <p class="medium">All Across Pakistan <sup>🇵🇰</sup></p>
+      </span>
     </div>
 </div>
 
@@ -23,7 +47,7 @@
     .hero-grid{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        padding-block: 80px;
+        padding-block: 70px;
     }
     .hero-col-1{
         display: flex;
@@ -32,8 +56,17 @@
         gap: 25px;
         padding: 20px;
     }
+    .hero-rating-icons{
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+    }
+    .hero-rating-icons span:first-child{
+      color: var(--color-primary);
+    }
     .hero-col-2{
     padding: 20px;
+    position: relative;
     }
      .hero-col-2 .hero-img{
     border-radius: 20px;
@@ -43,7 +76,34 @@
     .hero-star-rating{
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 12px;
+    }
+    .hero-star-rating span{
+      max-width: fit-content;
+    }
+    .hero-img-badge{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: var(--color-netural);
+      border-radius: 10px;
+      box-shadow: 0 0 5px #0000004f;
+      padding: 15px;
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+    }
+    .badge-icon{
+      background: #4a7dbc2e;
+      color: var(--color-primary);
+      padding: 8px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
     }
     .hero-btns{
       display: flex;
@@ -146,7 +206,12 @@
     "name": "Hero Section",
     "settings": {
       "hero_heading_text": "Professional Level Teeth Cleaning",
-      "hero_heading_para": "Dentist-grade results at home"
+      "hero_heading_para": "Dentist-grade results at home",
+      "hero_rating":"⭐⭐⭐⭐⭐ 4.9/5 (2850 reviews)",
+      "hero_shipping":"Free Shipping",
+      "hero_recomended":"Denstist Recommended",
+      "hero_product_btn_text":"Buy Now",
+      "hero_use_btn_text":"See How To Use"
     }
   }
 ]
