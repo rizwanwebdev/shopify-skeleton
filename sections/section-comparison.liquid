@@ -1,0 +1,182 @@
+<div class="comparison-section">
+  <div class="section-headings">
+    <h2>{{ section.settings.section_heading }}</h2>
+    <p>{{ section.settings.section_para }}</p>
+  </div>
+
+  <div class="comparison-sec-grid">
+    {% for block in section.blocks %}
+      {% render block %}
+    {% endfor %}
+  </div>
+</div>
+
+{% stylesheet %}
+    .section-headings{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .comparison-sec-grid{
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 20px;
+    }
+      @media (max-width:768px){
+        .comparison-sec-grid{
+        grid-template-columns: 1fr;
+    }
+    }
+{% endstylesheet %}
+{% schema %}
+{
+  "name": "Comparison Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading"
+    },
+    {
+      "type": "text",
+      "id": "section_para",
+      "label": "Section Paragraph"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mistakes",
+      "name": "Mistakes Column",
+      "settings": [
+        {
+      "type": "text",
+      "id": "mistakes_heading",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "text",
+      "id": "item_heading_1",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "text",
+      "id": "item_text_1",
+      "label": "t:labels.heading_para"
+    },
+    {
+      "type": "text",
+      "id": "item_heading_2",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "text",
+      "id": "item_text_2",
+      "label": "t:labels.heading_para"
+    },
+    {
+      "type": "text",
+      "id": "item_heading_3",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "text",
+      "id": "item_text_3",
+      "label": "t:labels.heading_para"
+    },
+    {
+      "type": "text",
+      "id": "item_heading_4",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "text",
+      "id": "item_text_4",
+      "label": "t:labels.heading_para"
+    },
+    {
+      "type": "text",
+      "id": "item_heading_5",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "text",
+      "id": "item_text_5",
+      "label": "t:labels.heading_para"
+    }
+    ],
+    },
+    {
+      "type": "solutions",
+      "name": "Solutions Column",
+      "settings": [
+        {
+      "type": "text",
+      "id": "solutions_heading",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "text",
+      "id": "item_heading_1",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "text",
+      "id": "item_text_1",
+      "label": "t:labels.heading_para"
+    },
+    {
+      "type": "text",
+      "id": "item_heading_2",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "text",
+      "id": "item_text_2",
+      "label": "t:labels.heading_para"
+    },
+    {
+      "type": "text",
+      "id": "item_heading_3",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "text",
+      "id": "item_text_3",
+      "label": "t:labels.heading_para"
+    },
+    {
+      "type": "text",
+      "id": "item_heading_4",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "text",
+      "id": "item_text_4",
+      "label": "t:labels.heading_para"
+    },
+    {
+      "type": "text",
+      "id": "item_heading_5",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "text",
+      "id": "item_text_5",
+      "label": "t:labels.heading_para"
+    }
+    ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison Section",
+      "settings": {
+        "section_heading": "Mistakes That Dull Your Smile — And How to Fix Them",
+        "section_para": "Everyday habits like coffee, tea, and smoking slowly stain and dull your teeth without you noticing.",
+      }
+    }
+  ]
+}
+
+{% endschema %}

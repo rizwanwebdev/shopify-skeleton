@@ -1,25 +1,42 @@
-<div class="mistake-blocks">
+<div class="mistakes-blocks">
     <div class="mistakes-heading">
         <span>{{ "icon-circle-x.svg" | inline_asset_content }}</span>
         <h3>{{ block.settings.mistakes_heading }}</h3>
     </div>
-    {% comment %} {% for block in blocks %}
-        
-    {% endfor %} {% endcomment %}
+    <div class="mistakes-col">
+    {% for i in (1..5) %}
+    {% assign heading_key = "item_heading_" | append: i %}
+    {% assign text_key = "item_text_" | append: i %}
 
-
+    {% if block.settings[heading_key] != blank %}
+        <div class="mistakes-row">
+        <span>{{ "icon-circle-x.svg" | inline_asset_content }}</span>
+        <div class="row-content">
+            <h4>{{ block.settings[heading_key] }}</h4>
+            <p>{{ block.settings[text_key] }}</p>
+        </div>
+        </div>
+    {% endif %}
+{% endfor %}
+    </div>
 </div>
 {% stylesheet %}
-.mistake-blocks{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}   
     .mistakes-block,
-    .mistakes-heading{
+    .mistakes-heading
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .mistakes-col{
+        display: flex;
+        flex-direction: column;
+        gap:10px;
+    }
+    .mistakes-row{
         display: flex;
         flex-direction: row;
-        gap: 10px;
+        gap: 8px;
     }
     .mistakes-heading span{
         padding: 7px;
@@ -27,27 +44,6 @@
         color: var(--color-danger);
         border-radius: 10px;
     }
+  
 {% endstylesheet %}
 
-{% schema %}
-   {
-    "name": "blocks",
-    "blocks": [{ "type": "@theme" }],
-    "settings": [
-        {
-        "type": "text",
-        "id": "mistakes_heading",
-        "label": "t:labels.heading"
-        }
-        
-    ],
-    "presets": [
-        {
-        "name": "blocks",
-        "settings": {
-            "mistakes_heading":"Common Problems",
-        }
-    }
-    ]
-    }
-{% endschema %}
