@@ -65,26 +65,32 @@
       {
         "type": "color",
         "id": "background_color",
-        "default": "#EAF4F7",
+        "default": "#F8FAFC",
         "label": "t:labels.background"
       },
       {
         "type": "color",
         "id": "foreground_color",
-        "default": "#0f172a",
+        "default": "#0F172A",
         "label": "t:labels.foreground"
       },
       {
         "type": "color",
         "id": "primary_color",
-        "default": "#4a7dbc",
+        "default": "#005BC4",
         "label": "t:labels.primary"
       },
       {
         "type": "color",
-        "id": "secondary_color",
-        "default": "#6D6F76",
-        "label": "t:labels.secondary"
+        "id": "hover_color",
+        "default": "#004494",
+        "label": "t:labels.hover"
+      },
+      {
+        "type": "color",
+        "id": "body_text",
+        "default": "#334155",
+        "label": "t:labels.body_text"
       },
       {
         "type": "color",
@@ -93,10 +99,10 @@
         "label": "t:labels.footer_color"
       },
       {
-        "type": "color",
-        "id": "cards_color",
-        "default": "#d0d6dc",
-        "label": "t:labels.cards_bg"
+        "type": "text",
+        "id": "section_color",
+        "default": "linear-gradient(135deg, #005BC4 0%, #003A7A 100%)",
+        "label": "t:labels.section_color"
       },
       {
         "type": "color",
@@ -113,7 +119,7 @@
       {
         "type": "color",
         "id": "border_color",
-        "default": "#C6CBD7",
+        "default": "#E2E8F0",
         "label": "t:labels.border"
       },
       {

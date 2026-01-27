@@ -215,15 +215,12 @@ h5,
 h6 {
   overflow-wrap: break-word;
   font-weight: 600;
+  color: var(--color-foreground);
 }
 a {
   text-decoration: none;
   transition: all 0.3s;
   --font-size-p-desktop: 1rem;
-}
-
-p:empty {
-  display: none;
 }
 
 :is(p, h1, h2, h3, h4, h5, h6):first-child,
@@ -234,6 +231,22 @@ p:empty {
 :is(p, h1, h2, h3, h4, h5, h6):last-child,
 :where(p, h1, h2, h3, h4, h5, h6) + :has(+ :empty:last-child) {
   margin-block-end: 0;
+}
+
+a:empty,
+ul:empty,
+dl:empty,
+div:empty,
+section:empty,
+article:empty,
+p:empty,
+h1:empty,
+h2:empty,
+h3:empty,
+h4:empty,
+h5:empty,
+h6:empty {
+  display: none;
 }
 
 /** Theme styles below */
