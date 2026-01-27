@@ -1,0 +1,152 @@
+<div class="faq-sec">
+    <h2 class="sec-heading">{{ section.settings.faq_heading }}</h2>
+    <div class="faq-block">
+        {% for block in section.blocks %}
+            <div class="faq-row">
+               <input type="checkbox" id="question-{{forloop.index}}" class="faq-toggle"> 
+               <label for="question-{{forloop.index}}" class="faq-question">{{ block.settings.questions_heading }}</label>
+               <div class="faq-answer">
+                {{ block.settings.questions_answer }}
+               </div>
+            </div>
+            
+        {% endfor %}
+    </div>
+</div>
+{% stylesheet %}
+    .sec-heading{
+        text-align: center;
+    }
+    .faq-toggle{
+        display: none;
+    }
+    .faq-toggle:checked + .faq-question:after{
+        transform: rotate(90deg);
+    }
+    .faq-question{
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .faq-question:after{
+        content: "\276F";
+        float: right;
+        transition: all .2s;
+    }
+    .faq-answer{
+        overflow: hidden;
+        max-height: 0;
+        transition: all .2s;
+        padding: 0;
+    }
+    .faq-toggle:checked ~ .faq-answer{
+
+        max-height: 100vh;
+        padding: 1em 0 ;
+    }
+
+    div:has(.faq-sec){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .faq-sec{
+        display: flex;
+        flex-direction: column;
+        width:100%;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    .faq-block,
+    .faq-row{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    .faq-row{
+        border: 1px solid var(--color-border);
+        background-color: var(--color-netural);
+        padding:20px 20px 12px 20px ;
+        border-radius: 12px;
+    }
+    @media (min-width:900px){
+        .faq-sec{
+            width: 85%;
+        }
+    }
+
+{% endstylesheet %}
+
+{% schema %}
+    {
+        "name": "FAQ",
+        "settings": [
+            {
+            "type": "text",
+            "label": "t:labels.heading",
+            "id": "faq_heading"
+            }
+        ],
+        "blocks": [
+           {
+            "name":"Questions",
+            "type": "questions",
+            "settings": [
+                {
+                "type": "text",
+                "label": "heading",
+                "id": "questions_heading"
+                },
+                {
+                "type": "text",
+                "label": "answer",
+                "id": "questions_answer"
+                }
+            ]
+        }
+        ],
+        "presets": [
+            {
+            "name": "FAQ's",
+            "settings": {
+            "faq_heading":"Frequently Asked Questions"
+            },
+            "blocks": [
+                {
+                "type": "questions",
+                "settings": {
+                "questions_heading":"How long does Smile Bright take to work?",
+                "questions_answer":"Most users see visible whitening within 3–7 days with daily use."
+                }
+             },
+             {
+                "type": "questions",
+                "settings": {
+                "questions_heading": "Is Smile Bright safe for sensitive teeth?",
+                "questions_answer": "Yes. Our formula is designed to be gentle and is suitable for most people with sensitive teeth."
+                }
+                },
+                {
+                "type": "questions",
+                "settings": {
+                "questions_heading": "How often should I use Smile Bright?",
+                "questions_answer": "Use once per day for best results, unless otherwise directed by your dentist."
+                }
+                },
+                {
+                "type": "questions",
+                "settings": {
+                "questions_heading": "Will it work with dental work like crowns or veneers?",
+                "questions_answer": "Smile Bright can remove surface stains from natural teeth but won’t change the color of crowns, veneers, or fillings."
+                }
+             }
+            ]
+        }
+        ]
+    }
+{% endschema %}

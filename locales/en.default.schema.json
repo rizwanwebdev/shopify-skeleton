@@ -41,6 +41,7 @@
     "secondary": "Secondary",
     "danger": "Danger",
     "netural": "Netural",
+    "border": "Border",
     "cards_bg": "Cards Background",
     "footer_color": "Footer Color",
     "grid_gap": "Grid spacing",

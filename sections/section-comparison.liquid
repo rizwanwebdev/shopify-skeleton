@@ -1,22 +1,60 @@
-<div class="comparison-section">
-  <div class="section-headings">
+<div class="comprarion-sec">
+  <div class="sec-headings">
     <h2>{{ section.settings.section_heading }}</h2>
     <p>{{ section.settings.section_para }}</p>
   </div>
-
   <div class="comparison-sec-grid">
+  <!-- Mistakes column -->
+  <div class="block-col">
     {% for block in section.blocks %}
-      {% render block %}
+      {% if block.type == 'mistakes_group' %}
+        <h3>{{ block.settings.block_heading }}</h3>
+      {% endif %}
+    {% endfor %}
+
+    {% for block in section.blocks %}
+      {% if block.type == 'mistake_item' %}
+        <div>
+          <h4>{{ block.settings.title }}</h4>
+          <p>{{ block.settings.info }}</p>
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
+
+  <!-- Solutions column -->
+  <div class="block-col">
+    {% for block in section.blocks %}
+      {% if block.type == 'solutions_group' %}
+        <h3>{{ block.settings.block_heading }}</h3>
+      {% endif %}
+    {% endfor %}
+
+    {% for block in section.blocks %}
+      {% if block.type == 'solution_item' %}
+        <div>
+          <h4>{{ block.settings.title }}</h4>
+          <p>{{ block.settings.info }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+</div>
 </div>
 
+
 {% stylesheet %}
-    .section-headings{
+    div:has(.comprarion-sec){
+      background-color: var(--color-netural);
+      padding-block: 70px;
+    }
+    .sec-headings{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        text-align: center;
     }
     .comparison-sec-grid{
       display: grid;
@@ -45,137 +83,118 @@
     }
   ],
   "blocks": [
-    {
-      "type": "mistakes",
-      "name": "Mistakes Column",
-      "settings": [
         {
-      "type": "text",
-      "id": "mistakes_heading",
-      "label": "t:labels.heading"
-    },
-    {
-      "type": "text",
-      "id": "item_heading_1",
-      "label": "t:labels.heading"
-    },
-    {
-      "type": "text",
-      "id": "item_text_1",
-      "label": "t:labels.heading_para"
-    },
-    {
-      "type": "text",
-      "id": "item_heading_2",
-      "label": "t:labels.heading"
-    },
-    {
-      "type": "text",
-      "id": "item_text_2",
-      "label": "t:labels.heading_para"
-    },
-    {
-      "type": "text",
-      "id": "item_heading_3",
-      "label": "t:labels.heading"
-    },
-    {
-      "type": "text",
-      "id": "item_text_3",
-      "label": "t:labels.heading_para"
-    },
-    {
-      "type": "text",
-      "id": "item_heading_4",
-      "label": "t:labels.heading"
-    },
-    {
-      "type": "text",
-      "id": "item_text_4",
-      "label": "t:labels.heading_para"
-    },
-    {
-      "type": "text",
-      "id": "item_heading_5",
-      "label": "t:labels.heading"
-    },
-    {
-      "type": "text",
-      "id": "item_text_5",
-      "label": "t:labels.heading_para"
-    }
+          "type": "mistakes_group",
+          "name": "Mistakes Column Heading",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "block_heading",
+              "label": "Heading"
+            }
+          ]
+        },
+        {
+          "type": "mistake_item",
+          "name": "Mistake",
+          "settings": [
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Mistake title"
+            },
+            {
+              "type": "text",
+              "id": "info",
+              "label": "Mistake info"
+            }
+          ]
+        },
+
+        {
+          "type": "solutions_group",
+          "name": "Solutions Column Heading",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "block_heading",
+              "label": "Heading"
+            }
+          ]
+        },
+      {
+        "type": "solution_item",
+        "name": "Solution",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+              "label": "Solution title"
+            },
+          {
+            "type": "text",
+            "id": "info",
+            "label": "Solution info"
+          }
+        ]
+      }
     ],
-    },
-    {
-      "type": "solutions",
-      "name": "Solutions Column",
-      "settings": [
-        {
-      "type": "text",
-      "id": "solutions_heading",
-      "label": "t:labels.heading"
-    },
-    {
-      "type": "text",
-      "id": "item_heading_1",
-      "label": "t:labels.heading"
-    },
-    {
-      "type": "text",
-      "id": "item_text_1",
-      "label": "t:labels.heading_para"
-    },
-    {
-      "type": "text",
-      "id": "item_heading_2",
-      "label": "t:labels.heading"
-    },
-    {
-      "type": "text",
-      "id": "item_text_2",
-      "label": "t:labels.heading_para"
-    },
-    {
-      "type": "text",
-      "id": "item_heading_3",
-      "label": "t:labels.heading"
-    },
-    {
-      "type": "text",
-      "id": "item_text_3",
-      "label": "t:labels.heading_para"
-    },
-    {
-      "type": "text",
-      "id": "item_heading_4",
-      "label": "t:labels.heading"
-    },
-    {
-      "type": "text",
-      "id": "item_text_4",
-      "label": "t:labels.heading_para"
-    },
-    {
-      "type": "text",
-      "id": "item_heading_5",
-      "label": "t:labels.heading"
-    },
-    {
-      "type": "text",
-      "id": "item_text_5",
-      "label": "t:labels.heading_para"
-    }
-    ]
-    }
-  ],
+
+
   "presets": [
     {
       "name": "Comparison Section",
       "settings": {
         "section_heading": "Mistakes That Dull Your Smile — And How to Fix Them",
-        "section_para": "Everyday habits like coffee, tea, and smoking slowly stain and dull your teeth without you noticing.",
+        "section_para": "Everyday habits like coffee, tea, and smoking slowly stain and dull your teeth without you noticing."
+      },
+       "blocks": [
+      {
+        "type": "mistakes_group",
+        "settings": {
+          "block_heading": "Common Mistakes"
+        }
+      },
+      {
+        "type": "mistake_item",
+        "settings": {
+          "title": "Drinking coffee daily",
+          "info": "Coffee stains enamel over time and causes discoloration."
+        }
+      },
+      {
+        "type": "mistake_item",
+        "settings": {
+          "title": "Smoking",
+          "info": "Nicotine causes yellowing and long-term tooth damage."
+        }
+      },
+
+      {
+        "type": "solutions_group",
+        "settings": {
+          "block_heading": "Smart Solutions"
+        }
+      },
+      {
+        "type": "solution_item",
+        "settings": {
+          "title": "Teeth whitening",
+          "info": "Professional whitening restores brightness safely."
+        }
+      },
+      {
+        "type": "solution_item",
+        "settings": {
+          "title": "Daily oral care",
+          "info": "Brushing and flossing prevent future stains."
+        }
       }
+    ]
     }
+    
   ]
 }
 

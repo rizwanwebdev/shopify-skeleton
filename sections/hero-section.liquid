@@ -72,6 +72,11 @@
     border-radius: 20px;
     box-shadow: 0 0 10px #0000004f;
     overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+    }
+    .hero-img__placeholder{
+      aspect-ratio: 3/4;
     }
     .hero-star-rating{
       display: flex;
@@ -144,7 +149,6 @@
       }
     }
 {% endstylesheet %}
-{% comment %} commented as dont not block for now "blocks": [{ "type": "@theme" }], {% endcomment %}
 {% schema %}
     {
   "name": "Hero Section",
@@ -205,8 +209,8 @@
   {
     "name": "Hero Section",
     "settings": {
-      "hero_heading_text": "Professional Level Teeth Cleaning",
-      "hero_heading_para": "Dentist-grade results at home",
+      "hero_heading_text": "A Brighter, More Confident Smile — Made Simple",
+      "hero_heading_para": "Reveal a noticeably whiter smile in just days with Smile Bright’s advanced whitening drops. Clean, gentle, and designed for effortless home use.",
       "hero_rating":"⭐⭐⭐⭐⭐ 4.9/5 (2850 reviews)",
       "hero_shipping":"Free Shipping",
       "hero_recomended":"Denstist Recommended",
