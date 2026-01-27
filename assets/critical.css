@@ -160,7 +160,7 @@ span {
   overflow-wrap: break-word;
   font-size: var(--font-size-p-desktop);
   line-height: var(--line-height-body);
-  color: var(--color-secondary);
+  color: var(--color-body-text);
 }
 
 .medium {
@@ -251,7 +251,7 @@ h6:empty {
 
 /** Theme styles below */
 body {
-  font-family: var(--font-primary--family);
+  font-family: var(--font-primary-family);
   background-color: var(--color-background);
   color: var(--color-foreground);
 }
