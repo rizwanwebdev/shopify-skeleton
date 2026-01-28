@@ -1,0 +1,192 @@
+<div class="benifts-sec">
+        <div class="section-heading">
+          
+           <h2>{{ section.settings.sec_heading }}</h2>
+            <p>{{ section.settings.sec_heading_para }}</p>
+        </div>
+        <div class="benifts-grid">
+          <div class="col animate-opacity">
+           <span class="icon"> {{ "icon-sparkles.svg" | inline_asset_content }}</span>
+            <div class="col-content">
+              <span class="badge primary font-semi small">
+                3 Shades Whiter
+              </span>
+              <h4>Professional Whiting</h4>
+
+              <p>
+                Removes years of stains with gentle. See results in just 7 days
+              </p>
+            </div>
+          </div>
+          <div class="col animate-opacity">
+            <span class="icon"> {{ "icon-sparkles.svg" | inline_asset_content }}</span>
+            <div class="col-content">
+              <span class="badge primary font-semi small">
+                3 Shades Whiter
+              </span>
+              <h4>Professional Whiting</h4>
+              <p>
+                Removes years of stains with gentle. See results in just 7 days
+              </p>
+            </div>
+          </div>
+          <div class="col animate-opacity">
+            <span class="icon"> {{ "icon-sparkles.svg" | inline_asset_content }}</span>
+                <div class="col-content">
+                <span class="badge primary font-semi small">
+                    3 Shades Whiter
+                </span>
+                <h4>Professional Whiting</h4>
+
+                <p>
+                    Removes years of stains with gentle. See results in just 7 days
+                </p>
+                </div>
+            </div>
+            <div class="col animate-opacity">
+            <span class="icon"> {{ "icon-sparkles.svg" | inline_asset_content }}</span>
+            <div class="col-content">
+              <span class="badge primary font-semi medium">
+                3 Shades Whiter
+              </span>
+              <h4>Professional Whiting</h4>
+
+              <p>
+                Removes years of stains with gentle. See results in just 7 days
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% stylesheet %}
+    div:has(.benifts-sec) {
+    
+    background: linear-gradient(
+        180deg,
+        var(--color-card) 10%,
+        var(--color-netural)
+    );
+    }
+    .benifts-sec {
+    padding-block: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    }
+    .badge {
+    padding: 1px 14px;
+    background-color: var(--color-card);
+    border-radius: 50px;
+    border: 1px solid var(--color-border);
+    width: fit-content;
+    }
+    .benifts-sec .col {
+    border: 2px solid var(--color-border);
+    background-color: var(--color-card);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    }
+    .benifts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    width: 90%;
+    }
+    @media screen and (max-width: 767px) {
+    .benifts-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+    }
+    .col-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    }
+
+    .icon {
+    padding: 7px 10px;
+    border-radius: 10px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    width: fit-content;
+    height: fit-content;
+    }
+    .animate-opacity {
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+    }
+    @keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateX(-250px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    }
+
+{% endstylesheet %}
+
+{% schema %}
+    {
+        "name": "Benifts Section",
+        "settings": [
+            {
+            "type": "text",
+            "id": "sec_heading",
+            "label": "Section heading"
+            },{
+            "type": "text",
+            "id": "sec_heading_para",
+            "label": "Section heading para"
+            }
+        ],
+        "blocks": [
+            {
+            "name": "Benift Block",
+            "type": "column",
+            "limit": 3,
+            "settings": [
+                {
+                "type": "text",
+                "id": "col_icon",
+                "label": "pick icon"
+                },
+                 {
+                "type": "text",
+                "id": "col_step",
+                "label": "col_step number"
+                },
+                 {
+                "type": "text",
+                "id": "col_heading",
+                "label": "col_heading"
+                },
+                 {
+                "type": "text",
+                "id": "col_extra_info",
+                "label": "col_extra_info"
+                }
+            ]
+            }
+        ],
+        "presets": [
+            {
+            "name": "Benifts Section",
+            "settings": {
+            "sec_heading":"The Benifits You'll Love",
+            "sec_heading_para":"Transform your smile with professional oral care"
+            }
+            }
+        ]
+    }
+{% endschema %}

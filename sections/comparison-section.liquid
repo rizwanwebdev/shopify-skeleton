@@ -6,15 +6,17 @@
   <div class="comparison-sec-grid">
   <!-- Mistakes column -->
   <div class="block-col">
+    <div  class="block-heading">
     {% for block in section.blocks %}
       {% if block.type == 'mistakes_group' %}
-        <h3>{{ block.settings.block_heading }}</h3>
+        <span class="h-icon danger">{{ "icon-circle-x.svg" | inline_asset_content }}</span>
+        <h4>{{ block.settings.block_heading }}</h4>
       {% endif %}
     {% endfor %}
-
+    </div>
     {% for block in section.blocks %}
       {% if block.type == 'mistake_item' %}
-        <div>
+        <div class="block-row">
           <h4>{{ block.settings.title }}</h4>
           <p>{{ block.settings.info }}</p>
         </div>
@@ -24,15 +26,18 @@
 
   <!-- Solutions column -->
   <div class="block-col">
-    {% for block in section.blocks %}
+ <div class="block-heading">
+     {% for block in section.blocks %}
       {% if block.type == 'solutions_group' %}
-        <h3>{{ block.settings.block_heading }}</h3>
+        <span class="primary">{{ "icon-circle-check-big.svg" | inline_asset_content }}</span>
+        <h4>{{ block.settings.block_heading }}</h4>
       {% endif %}
     {% endfor %}
+ </div>
 
     {% for block in section.blocks %}
       {% if block.type == 'solution_item' %}
-        <div>
+        <div class="block-row">
           <h4>{{ block.settings.title }}</h4>
           <p>{{ block.settings.info }}</p>
         </div>
@@ -46,13 +51,13 @@
 
 {% stylesheet %}
     div:has(.comprarion-sec){
-      background-color: var(--color-netural);
+      background: linear-gradient(135deg, var(--color-netural) 0%, var(--color-background) 100%);
       padding-block: 70px;
     }
     .comprarion-sec{
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 30px;
       justify-content: center;
     }
     .sec-headings{
@@ -67,10 +72,29 @@
       grid-template-columns: repeat(2,1fr);
       gap: 20px;
     }
-      @media (max-width:768px){
-        .comparison-sec-grid{
-        grid-template-columns: 1fr;
+    .block-col{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
+
+    .block-heading {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+    }
+    .block-heading span{
+      padding: 10px;
+      border-radius: 10px;
+      background-color: var(--color-card);
+    }
+
+
+    @media (max-width:767px){
+      .comparison-sec-grid{
+      grid-template-columns: 1fr;
+      }
     }
 {% endstylesheet %}
 {% schema %}

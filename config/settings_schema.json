@@ -77,7 +77,7 @@
       {
         "type": "color",
         "id": "primary_color",
-        "default": "#005BC4",
+        "default": "#7775D2",
         "label": "t:labels.primary"
       },
       {
@@ -89,7 +89,7 @@
       {
         "type": "color",
         "id": "body_text",
-        "default": "#334155",
+        "default": "#62686F",
         "label": "t:labels.body_text"
       },
       {
@@ -97,12 +97,6 @@
         "id": "footer_color",
         "default": "#0f172a",
         "label": "t:labels.footer_color"
-      },
-      {
-        "type": "text",
-        "id": "section_color",
-        "default": "linear-gradient(135deg, #005BC4 0%, #003A7A 100%)",
-        "label": "t:labels.section_color"
       },
       {
         "type": "color",
@@ -121,6 +115,12 @@
         "id": "border_color",
         "default": "#E2E8F0",
         "label": "t:labels.border"
+      },
+      {
+        "type": "color",
+        "id": "card_color",
+        "default": "#E2E8F0",
+        "label": "t:labels.card_color"
       },
       {
         "type": "range",
