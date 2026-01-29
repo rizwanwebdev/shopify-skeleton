@@ -14,14 +14,19 @@
       {% endif %}
     {% endfor %}
     </div>
+    <div  class="block-col-row">
     {% for block in section.blocks %}
       {% if block.type == 'mistake_item' %}
         <div class="block-row">
-          <h4>{{ block.settings.title }}</h4>
+           <span class="h-icon danger">{{ "icon-circle-x.svg" | inline_asset_content }}</span>
+         <div>
+           <h5>{{ block.settings.title }}</h5>
           <p>{{ block.settings.info }}</p>
+         </div>
         </div>
       {% endif %}
     {% endfor %}
+    </div>
   </div>
 
   <!-- Solutions column -->
@@ -35,14 +40,19 @@
     {% endfor %}
  </div>
 
-    {% for block in section.blocks %}
+  <div class="block-col-row">
+      {% for block in section.blocks %}
       {% if block.type == 'solution_item' %}
         <div class="block-row">
-          <h4>{{ block.settings.title }}</h4>
+          <span class="primary">{{ "icon-circle-check-big.svg" | inline_asset_content }}</span>
+         <div>
+           <h5>{{ block.settings.title }}</h5>
           <p>{{ block.settings.info }}</p>
+         </div>
         </div>
       {% endif %}
     {% endfor %}
+  </div>
   </div>
 
 </div>
@@ -75,7 +85,7 @@
     .block-col{
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 30px;
     }
 
     .block-heading {
@@ -88,6 +98,21 @@
       padding: 10px;
       border-radius: 10px;
       background-color: var(--color-card);
+    }
+    .block-row{
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      padding: 20px;
+      background-color: var(--color-card);
+      border-radius: 10px;
+      border: 1px solid var(--color-border);
+    }
+    .block-col-row{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
     }
 
 
