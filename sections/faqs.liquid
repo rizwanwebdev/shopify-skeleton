@@ -4,9 +4,9 @@
         {% for block in section.blocks %}
             <div class="faq-row">
                <input type="checkbox" id="question-{{forloop.index}}" class="faq-toggle"> 
-               <label for="question-{{forloop.index}}" class="faq-question">{{ block.settings.questions_heading }}</label>
+               <label for="question-{{forloop.index}}" class="faq-question">{{ block.settings.title }}</label>
                <div class="faq-answer">
-                {{ block.settings.questions_answer }}
+                {{ block.settings.answer }}
                </div>
             </div>
             
@@ -83,70 +83,70 @@
 {% endstylesheet %}
 
 {% schema %}
+{
+  "name": "FAQ",
+  "settings": [
     {
-        "name": "FAQ",
-        "settings": [
-            {
-            "type": "text",
-            "label": "t:labels.heading",
-            "id": "faq_heading"
-            }
-        ],
-        "blocks": [
-           {
-            "name":"Questions",
-            "type": "questions",
-            "settings": [
-                {
-                "type": "text",
-                "label": "heading",
-                "id": "questions_heading"
-                },
-                {
-                "type": "text",
-                "label": "answer",
-                "id": "questions_answer"
-                }
-            ]
-        }
-        ],
-        "presets": [
-            {
-            "name": "FAQ's",
-            "settings": {
-            "faq_heading":"Frequently Asked Questions"
-            },
-            "blocks": [
-                {
-                "type": "questions",
-                "settings": {
-                "questions_heading":"How long does Smile Bright take to work?",
-                "questions_answer":"Most users see visible whitening within 3–7 days with daily use."
-                }
-             },
-             {
-                "type": "questions",
-                "settings": {
-                "questions_heading": "Is Smile Bright safe for sensitive teeth?",
-                "questions_answer": "Yes. Our formula is designed to be gentle and is suitable for most people with sensitive teeth."
-                }
-                },
-                {
-                "type": "questions",
-                "settings": {
-                "questions_heading": "How often should I use Smile Bright?",
-                "questions_answer": "Use once per day for best results, unless otherwise directed by your dentist."
-                }
-                },
-                {
-                "type": "questions",
-                "settings": {
-                "questions_heading": "Will it work with dental work like crowns or veneers?",
-                "questions_answer": "Smile Bright can remove surface stains from natural teeth but won’t change the color of crowns, veneers, or fillings."
-                }
-             }
-            ]
-        }
-        ]
+      "type": "text",
+      "label": "t:labels.heading",
+      "id": "faq_heading"
     }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Question",
+          "id": "title"
+        },
+        {
+          "type": "text",
+          "label": "Answer",
+          "id": "answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ's",
+      "settings": {
+        "faq_heading": "Frequently Asked Questions"
+      },
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "title": "How long does Smile Bright take to work?",
+            "answer": "Most users see visible whitening within 3–7 days with daily use."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "title": "Is Smile Bright safe for sensitive teeth?",
+            "answer": "Yes. Our formula is designed to be gentle and is suitable for most people with sensitive teeth."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "title": "How often should I use Smile Bright?",
+            "answer": "Use once per day for best results, unless otherwise directed by your dentist."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "title": "Will it work with dental work like crowns or veneers?",
+            "answer": "Smile Bright can remove surface stains from natural teeth but won’t change the color of crowns, veneers, or fillings."
+          }
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
