@@ -1,0 +1,54 @@
+{% doc %}
+  Renders an icon from a predefined set of theme icons stored in the assets folder.
+
+  @param {string} name - Icon name (logical name from settings, e.g. "award", "heart")
+  @param {number} [size] - Optional size in pixels for width/height (defaults to 24)
+  @param {string} [color] - Optional CSS color value (defaults to currentColor)
+  @param {string} [class] - Optional extra CSS class names to add to the icon wrapper
+
+  @example
+  {% render 'icon', name: section.settings.icon %}
+  {% render 'icon', name: 'heart', size: 32, color: '#ff0000' %}
+{% enddoc %}
+
+{% liquid
+  assign icon_name = name | default: 'sparkles'
+  assign icon_size = size | default: 24
+  assign icon_color = color | default: 'currentColor'
+
+  case icon_name
+    when 'award'
+      assign icon_file = 'icon-award.svg'
+    when 'heart'
+      assign icon_file = 'icon-heart.svg'
+    when 'shield'
+      assign icon_file = 'icon-shield.svg'
+    else
+      assign icon_file = 'icon-sparkles.svg'
+  endcase
+%}
+
+<span
+  class="theme-icon theme-icon--{{ icon_name }} {{ class }}"
+  aria-hidden="true"
+  style="--icon-size: {{ icon_size }}px; --icon-color: {{ icon_color }};"
+>
+  {{ icon_file | inline_asset_content }}
+</span>
+
+{% stylesheet %}
+  .theme-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--icon-size, 1.5rem);
+    height: var(--icon-size, 1.5rem);
+    color: var(--icon-color, currentColor);
+  }
+
+  .theme-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+{% endstylesheet %}

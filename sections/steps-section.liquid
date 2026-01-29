@@ -6,7 +6,7 @@
 <div class="steps-sec-content">
     <div class="col">
     <div class="step-blob">
-        <span class="icon-blob">
+        <span class="icon-blob primary">
         {{ "icon-circle-dot.svg" | inline_asset_content }}
         <span class="icon-sup small">1</span>
         </span>
@@ -17,7 +17,7 @@
     </div>
     <div class="col">
     <div class="step-blob">
-        <span class="icon-blob">
+        <span class="icon-blob primary">
         {{ "icon-waves.svg" | inline_asset_content }}
         <span class="icon-sup small">2</span>
         </span>
@@ -28,7 +28,7 @@
     </div>
     <div class="col">
     <div class="step-blob">
-        <span class="icon-blob">
+        <span class="icon-blob primary">
         {{ "icon-sparkles.svg" | inline_asset_content }}
         <span class="icon-sup small">3</span>
         </span>
@@ -57,15 +57,12 @@
     gap: 60px;
     }
     .steps-sec-content {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     }
-    @media screen and (max-width: 767px) {
-    .steps-sec-content {
-        grid-template-columns: 1fr;
-    }
-    }
+
     .step-blob {
     display: flex;
     justify-content: center;
@@ -74,7 +71,7 @@
     .icon-blob {
     position: relative;
     border-radius: 50%;
-    padding: 20px;
+    padding: 15px;
     border: 1px solid var(--color-border);
     background-color: var(--color-card);
     display: flex;
@@ -82,12 +79,17 @@
     align-items: center;
     width: max-content;
     }
+    .icon-blob svg{
+        width: 30px;
+        height: 30px;
+    }
     .steps-sec .col {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 6px;
+    position: relative;
     }
     .icon-sup {
     position: absolute;
@@ -95,7 +97,7 @@
     right: -5px;
     background-color: var(--color-foreground);
     border-radius: 50%;
-    padding: 2px 10px;
+    padding: 1px 8px;
     aspect-ratio: 1;
     color: var(--color-netural);
     }
@@ -117,6 +119,25 @@
     aspect-ratio: 1;
     background: var(--color-primary);
     border-radius: 50px;
+    }
+    .steps-sec .col:not(:last-child) .icon-blob::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: clamp(120px, 20vw, 350px);
+    height: 2px;
+    border-radius: 0 5px 5px 0 ;
+    background-color: var(--color-border);
+    transform: translateY(-50%);
+    }
+    @media screen and (max-width: 767px) {
+    .steps-sec-content {
+        grid-template-columns: 1fr;
+    }
+    .steps-sec .icon-blob::after {
+        display: none;
+    }
     }
 {% endstylesheet %}
 
