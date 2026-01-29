@@ -18,7 +18,7 @@
     <div class="col">
     <div class="step-blob">
         <span class="icon-blob">
-        {{ "icon-wave.svg" | inline_asset_content }}
+        {{ "icon-waves.svg" | inline_asset_content }}
         <span class="icon-sup small">2</span>
         </span>
     </div>
@@ -44,6 +44,9 @@
     </div>
 </div>
 {% stylesheet %}
+    div:has(.steps-sec){
+    background-color: var(--color-section);
+    }
     .steps-sec {
     padding-block: 70px;
     display: flex;
@@ -52,7 +55,6 @@
     justify-content: center;
     text-align: center;
     gap: 60px;
-    background-color: var(--color-card);
     }
     .steps-sec-content {
     display: grid;
@@ -73,6 +75,7 @@
     position: relative;
     border-radius: 50%;
     padding: 20px;
+    border: 1px solid var(--color-border);
     background-color: var(--color-card);
     display: flex;
     justify-content: center;

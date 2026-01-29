@@ -113,14 +113,20 @@
       {
         "type": "color",
         "id": "border_color",
-        "default": "#E2E8F0",
+        "default": "#C6D5E6",
         "label": "t:labels.border"
       },
       {
         "type": "color",
         "id": "card_color",
-        "default": "#E2E8F0",
+        "default": "#E9EDF4",
         "label": "t:labels.card_color"
+      },
+      {
+        "type": "color",
+        "id": "sec_color",
+        "default": "#F4F4F9",
+        "label": "t:labels.sec_color"
       },
       {
         "type": "range",
