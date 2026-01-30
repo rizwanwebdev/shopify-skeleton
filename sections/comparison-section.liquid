@@ -3,10 +3,10 @@
     <h2>{{ section.settings.section_heading }}</h2>
     <p>{{ section.settings.section_para }}</p>
   </div>
-  <div class="comparison-sec-grid animate-x">
+  <div class="comparison-sec-grid">
   <!-- Mistakes column -->
   <div class="block-col">
-    <div  class="block-heading">
+    <div  class="block-heading animate-right">
     {% for block in section.blocks %}
       {% if block.type == 'mistakes_group' %}
         <span class="h-icon danger">{{ "icon-circle-x.svg" | inline_asset_content }}</span>
@@ -17,7 +17,7 @@
     <div  class="block-col-row">
     {% for block in section.blocks %}
       {% if block.type == 'mistake_item' %}
-        <div class="block-row">
+        <div class="block-row animate-right">
            <span class="h-icon danger">{{ "icon-circle-x.svg" | inline_asset_content }}</span>
          <div>
            <h5>{{ block.settings.title }}</h5>
@@ -31,7 +31,7 @@
 
   <!-- Solutions column -->
   <div class="block-col">
- <div class="block-heading">
+ <div class="block-heading animate-left">
      {% for block in section.blocks %}
       {% if block.type == 'solutions_group' %}
         <span class="primary">{{ "icon-circle-check-big.svg" | inline_asset_content }}</span>
@@ -43,7 +43,7 @@
   <div class="block-col-row">
       {% for block in section.blocks %}
       {% if block.type == 'solution_item' %}
-        <div class="block-row">
+        <div class="block-row animate-left">
           <span class="primary">{{ "icon-circle-check-big.svg" | inline_asset_content }}</span>
          <div>
            <h5>{{ block.settings.title }}</h5>

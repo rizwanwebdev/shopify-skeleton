@@ -6,7 +6,7 @@
         </div>
         <div class="benifts-grid">
          {% for block in section.blocks %}
-           <div class="col">
+           <div class="benifts-grid-col animate-x">
             {% render 'icon', name: block.settings.col_icon_name, size:block.settings.col_icon_size, color: block.settings.col_icon_color,radius: block.settings.col_icon_radius, class: 'icon-bg' %}
         
             <div class="col-content">
@@ -41,7 +41,7 @@
     border: 1px solid var(--color-border);
     width: fit-content;
     }
-    .benifts-sec .col {
+    .benifts-sec .benifts-grid-col {
     border: 2px solid var(--color-border);
     background-color: var(--color-card);
     border-radius: 20px;
@@ -66,20 +66,6 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    }
-    .col-content .col{
-    animation-timing-function: ease-out;
-    animation-fill-mode: both;
-
-    animation-timeline: view();
-    animation-range: entry 0% cover 30%;
-    }
-    .col-content .col:nth-child(odd) {
-    animation-name: slide-right;
-    }
-
-    .col-content .col:nth-child(even) {
-    animation-name: slide-left;
     }
     
 

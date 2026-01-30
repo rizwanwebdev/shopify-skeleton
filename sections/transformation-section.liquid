@@ -33,7 +33,7 @@
     </div>
     <div class="blocks-grid">
         {% for block in section.blocks %}
-            <div class="title-block">
+            <div class="title-block slide-out-fwd-center">
                 <h3 class="primary">{{ block.settings.title }}</h3>
                 <p class="medium">{{ block.settings.info }}</p>
             </div>
@@ -41,7 +41,7 @@
             
         {% endfor %}
     </div>
-    <p class="small">{{ section.settings.notice }}</p>
+    <p class="smaller notice">{{ section.settings.notice }}</p>
 </div>
 
 {% stylesheet %}
@@ -84,7 +84,7 @@
         rgba(0, 0, 0, 0.20) 100%
     );
     pointer-events: none;
-}
+    }
     .after-img{
         border: 3px solid var(--color-primary);
     }
@@ -107,6 +107,9 @@
         background: var(--color-netural);
         border: 1px solid var(--color-border);
         border-radius: 10px;
+        text-align: center;
+    }
+    .notice{
         text-align: center;
     }
     @media screen and (max-width:767px){
@@ -171,7 +174,7 @@
                 "settings": {
                     "heading":"Real Results, Real Smile",
                     "heading_para":"See the transformation our customers experience",
-                    "notice":"Results may vary Images are for illustrative purposes. Induvisual results may depend on usage consistency and baseline dental health. \n Consult your Doctor before starting any whitning regimen"
+                    "notice":"Results may vary Images are for illustrative purposes. Induvisual results may depend on usage consistency and baseline dental health. \n<br> Consult your Doctor before starting any whitning regimen"
                 },
                 "blocks": [
                     {

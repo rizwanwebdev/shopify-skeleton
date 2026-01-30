@@ -15,8 +15,8 @@
           <span>{{section.settings.hero_recomended}}</span></span>
     </div>
     <div class="hero-btns">
-      <a class="button button-solid" href="{{ section.settings.hero_product.url }}">{{ section.settings.hero_product_btn_text }}</a>
-      <a class="button button-outline" href="{{ section.settings.hero_use_btn_link }}">{{ section.settings.hero_use_btn_text }}</a>
+      <a class="button bounce-top button-solid" href="{{ section.settings.hero_product.url }}">{{ section.settings.hero_product_btn_text }}</a>
+      <a class="button bounce-top button-outline" href="{{ section.settings.hero_use_btn_link }}">{{ section.settings.hero_use_btn_text }}</a>
     </div>
 </div>
 <div class="hero-col-2">
@@ -33,7 +33,7 @@
     {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero-img__placeholder' }}
   {% endif %}
 </div>
-    <div class="hero-img-badge">
+    <div class="hero-img-badge zoomInLeft">
       {% render 'icon', name: section.settings.col_icon_name, size:section.settings.col_icon_size, color: section.settings.col_icon_color,radius: section.settings.col_icon_radius, class: 'icon-bg' %}
       <span>
         <h4>Free Shipping</h4>
@@ -127,6 +127,66 @@
         order: 2;
       }
     }
+    .zoomInLeft {
+    animation-name: zoomInLeft;
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+    }
+    @keyframes zoomInLeft {
+    0% {
+    opacity: 0;
+    transform: scale3d(.1, .1, .1) translate3d(-1000px, 0, 0);
+    animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+    }
+    60% {
+    opacity: 1;
+    transform: scale3d(.475, .475, .475) translate3d(10px, 0, 0);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+    }
+    } 
+    .bounce-top {
+	  animation: bounce-top 1s both;
+    }
+    @keyframes bounce-top {
+    0% {
+     transform: translateY(-45px);
+      animation-timing-function: ease-in;
+      opacity: 1;
+    }
+    24% {
+      opacity: 1;
+    }
+    40% {
+     transform: translateY(-24px);
+      animation-timing-function: ease-in;
+    }
+    65% {
+      transform: translateY(-12px);
+      animation-timing-function: ease-in;
+    }
+    82% {
+      transform: translateY(-6px);
+      animation-timing-function: ease-in;
+    }
+    93% {
+      transform: translateY(-4px);
+      animation-timing-function: ease-in;
+    }
+    25%,
+    55%,
+    75%,
+    87% {
+      transform: translateY(0px);
+      animation-timing-function: ease-out;
+    }
+    100% {
+      transform: translateY(0px);
+      animation-timing-function: ease-out;
+      opacity: 1;
+    }
+  }
+
+
 {% endstylesheet %}
 {% schema %}
     {
