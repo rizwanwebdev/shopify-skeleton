@@ -33,6 +33,9 @@
     "typography": "Typography"
   },
   "labels": {
+    "title": "Title",
+    "info": "Info",
+    "notice": "Notice",
     "alignment": "Alignment",
     "background": "Background",
     "foreground": "Foreground",
@@ -52,6 +55,8 @@
     "menu": "Menu",
     "padding": "Padding",
     "page_margin": "Page margin",
+    "padding_block": "Page Padding Block",
+    "section_gap": "Section content gap",
     "page_width": "Page width",
     "show_payment_icons": "Show payment icons",
     "text_style": "Text style",

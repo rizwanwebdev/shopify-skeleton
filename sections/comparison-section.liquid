@@ -1,9 +1,9 @@
-<div class="comprarion-sec">
-  <div class="sec-headings">
+<div class="comprarion-sec padding-block flex-col">
+  <div class="sec-heading">
     <h2>{{ section.settings.section_heading }}</h2>
     <p>{{ section.settings.section_para }}</p>
   </div>
-  <div class="comparison-sec-grid">
+  <div class="comparison-sec-grid animate-x">
   <!-- Mistakes column -->
   <div class="block-col">
     <div  class="block-heading">
@@ -62,20 +62,6 @@
 {% stylesheet %}
     div:has(.comprarion-sec){
       background: linear-gradient(135deg, var(--color-netural) 0%, var(--color-background) 100%);
-      padding-block: 70px;
-    }
-    .comprarion-sec{
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      justify-content: center;
-    }
-    .sec-headings{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
     }
     .comparison-sec-grid{
       display: grid;
@@ -230,7 +216,7 @@
       {
         "type": "solutions_group",
         "settings": {
-          "block_heading": "Smart Solutions"
+          "block_heading": "Smile Bright Solutions"
         }
       },
       {

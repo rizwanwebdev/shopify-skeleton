@@ -1,0 +1,208 @@
+<div class="transform-sec padding-block flex-col">
+     <div class="sec-heading">
+        <h2>{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.heading_para }}</p>
+    </div>
+    <div class="images-grid">
+        <div class="before-img animate-x transform-img">
+            {% if section.settings.before_image %}
+                {{ section.settings.before_image
+                | image_url: width: 700
+                | image_tag:
+                    alt: 'Before Transformation',
+                    loading: 'lazy'
+                }}
+            {% else %}
+                {{ 'hero-apparel-1' | placeholder_svg_tag: 'transform-img-holder' }}
+            {% endif %}
+            <span class="img-badge">Before</span>
+        </div>
+        <div class="after-img animate-x transform-img">
+            {% if section.settings.after_image %}
+                {{ section.settings.after_image
+                | image_url: width: 700
+                | image_tag:
+                    alt: 'After Transformation',
+                    loading: 'lazy'
+                }}
+            {% else %}
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'transform-img-holder' }}
+            {% endif %}
+            <span class="img-badge">After Few Days</span>
+        </div>
+    </div>
+    <div class="blocks-grid">
+        {% for block in section.blocks %}
+            <div class="title-block">
+                <h3 class="primary">{{ block.settings.title }}</h3>
+                <p class="medium">{{ block.settings.info }}</p>
+            </div>
+
+            
+        {% endfor %}
+    </div>
+    <p class="small">{{ section.settings.notice }}</p>
+</div>
+
+{% stylesheet %}
+    div:has(.transform-sec){
+        background: linear-gradient(0deg, var(--color-section) 0%, var(--color-netural));
+    }
+    .transform-img-holder{
+        aspect-ratio: 4/3;
+    }
+    .images-grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    .transform-img{
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        aspect-ratio: 4/3;
+    }
+    .before-img{
+        border: 3px solid var(--color-border);
+    }
+    .before-img .img-badge{
+        background: var(--color-background);
+        font-weight: 600;
+    }
+    .after-img .img-badge{
+        background: var(--color-primary);
+        color: var(--color-netural);
+        font-weight: 600;
+    }
+    .before-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.20) 0%,
+        rgba(0, 0, 0, 0.20) 100%
+    );
+    pointer-events: none;
+}
+    .after-img{
+        border: 3px solid var(--color-primary);
+    }
+    .img-badge{
+        position: absolute;
+        z-index: 10;
+        top: 4%;
+        left: 4%;
+        padding: 7px 18px;
+        border-radius: 50px;
+        box-shadow: 0 0 10px 2px #0000002c;
+    }
+    .blocks-grid{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+    .title-block{
+        padding: 20px;
+        background: var(--color-netural);
+        border: 1px solid var(--color-border);
+        border-radius: 10px;
+        text-align: center;
+    }
+    @media screen and (max-width:767px){
+        .images-grid{
+             grid-template-columns: 1fr;
+        }
+        .blocks-grid{
+            grid-template-columns: repeat(2, 1fr);
+        }
+        }
+{% endstylesheet %}
+{% schema %}
+    {
+        "name": "Transformation Preview",
+        "settings": [
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "t:labels.heading"
+            },
+             {
+                "type": "text",
+                "id": "heading_para",
+                "label": "t:labels.heading_para"
+            },
+            {
+            "type": "text",
+            "id": "notice",
+            "label": "t:labels.notice"
+            },
+            {
+            "type": "image_picker",
+            "id": "before_image",
+            "label": "Before Image"
+            },
+            {
+            "type": "image_picker",
+            "id": "after_image",
+            "label": "After Image"
+            },
+
+        ], "blocks": [
+            {
+            "type": "transform-extra",
+            "name":"Transform Blocks",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "t:labels.title"
+                }, {
+                    "type": "text",
+                    "id": "info",
+                    "label": "t:labels.info"
+                }
+            ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Transformation Preview",
+                "settings": {
+                    "heading":"Real Results, Real Smile",
+                    "heading_para":"See the transformation our customers experience",
+                    "notice":"Results may vary Images are for illustrative purposes. Induvisual results may depend on usage consistency and baseline dental health. \n Consult your Doctor before starting any whitning regimen"
+                },
+                "blocks": [
+                    {
+                    "type": "transform-extra",
+                    "settings": {
+                        "title":"7 Days",
+                        "info":"Visible Results"
+                        }
+                    },
+                    {
+                    "type": "transform-extra",
+                    "settings": {
+                        "title":"3 Shades",
+                        "info":"Whiter Teeth"
+                        }
+                    },
+                    {
+                    "type": "transform-extra",
+                    "settings": {
+                        "title":"92%",
+                        "info":"Customer Satisfaction"
+                        }
+                    },{
+                    "type": "transform-extra",
+                    "settings": {
+                        "title":"100%",
+                        "info":"Free Shipping"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

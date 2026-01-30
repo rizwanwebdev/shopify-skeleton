@@ -56,6 +56,26 @@
         "unit": "px",
         "label": "t:labels.page_margin",
         "default": 50
+      },
+      {
+        "type": "range",
+        "id": "padding_block",
+        "min": 10,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "label": "t:labels.padding_block",
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "section_gap",
+        "min": 10,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "label": "t:labels.section_gap",
+        "default": 60
       }
     ]
   },

@@ -1,5 +1,5 @@
-<div class="steps-sec">
-<div class="section-heading">
+<div class="steps-sec padding-block flex-col">
+<div class="sec-heading">
     <h2>{{ section.settings.sec_heading }}</h2>
     <p>{{ section.settings.sec_heading_para }}</p>
 </div>
@@ -46,15 +46,6 @@
 {% stylesheet %}
     div:has(.steps-sec){
     background-color: var(--color-section);
-    }
-    .steps-sec {
-    padding-block: 70px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 60px;
     }
     .steps-sec-content {
     position: relative;

@@ -1,12 +1,12 @@
-<div class="benifts-sec">
-        <div class="section-heading">
+<div class="benifts-sec padding-block flex-col">
+        <div class="sec-heading ">
           
            <h2>{{ section.settings.sec_heading }}</h2>
             <p>{{ section.settings.sec_heading_para }}</p>
         </div>
         <div class="benifts-grid">
          {% for block in section.blocks %}
-           <div class="col animate-opacity">
+           <div class="col">
             {% render 'icon', name: block.settings.col_icon_name, size:block.settings.col_icon_size, color: block.settings.col_icon_color,radius: block.settings.col_icon_radius, class: 'icon-bg' %}
         
             <div class="col-content">
@@ -32,15 +32,7 @@
         180deg,
         var(--color-section) 10%,
         var(--color-netural)
-    );
-    }
-    .benifts-sec {
-    padding-block: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
+    );        
     }
     .badge {
     padding: 1px 14px;
@@ -75,21 +67,21 @@
     flex-direction: column;
     gap: 5px;
     }
-    .animate-opacity {
-    animation: appear linear;
+    .col-content .col{
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+
     animation-timeline: view();
-    animation-range: entry 0% cover 20%;
+    animation-range: entry 0% cover 30%;
     }
-    @keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateX(-250px);
+    .col-content .col:nth-child(odd) {
+    animation-name: slide-right;
     }
-    to {
-        opacity: 1;
-        transform: translateX(0);
+
+    .col-content .col:nth-child(even) {
+    animation-name: slide-left;
     }
-    }
+    
 
 {% endstylesheet %}
 
@@ -144,16 +136,16 @@
                 "type": "range",
                 "id": "col_icon_size",
                 "label": "Icon Size",
-                "min": 12,
+                "min": 24,
                 "max": 80,
                 "step": 2,
-                "default": 24
+                "default": 40
                 }
                 ,
                  {
                 "type": "range",
                 "id": "col_icon_radius",
-                "label": "Icon Size",
+                "label": "Icon Roundness",
                 "min": 0,
                 "max": 100,
                 "step": 2,
@@ -207,7 +199,7 @@
               "type": "benift_column",
               "settings": {
               "col_step_text":"4 Shades Whiter",
-              "title":"Professional Whiting test",
+              "title":"Professional Whiting",
               "col_extra_info":"Removes years of stains with gentle. See results in just 7 days",
               "col_icon_name":"award"
               }

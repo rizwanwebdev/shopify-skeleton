@@ -16,7 +16,7 @@
   assign icon_name = name | default: 'sparkles'
   assign icon_size = size | default: 24
   assign icon_radius = radius | default: 0
-  assign icon_color = color | default: 'currentColor'
+  assign icon_color = color | default: '#7775D2'
 
   case icon_name
     when 'award'
@@ -66,7 +66,7 @@
   }
 
   .theme-icon svg {
-    width: var(--icon-size, 1.5rem);
+    width: var(--icon-size);
     fill: none;
     stroke: var(--icon-color, currentColor);
   }

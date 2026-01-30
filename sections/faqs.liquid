@@ -1,5 +1,8 @@
-<div class="faq-sec">
-    <h2 class="sec-heading">{{ section.settings.faq_heading }}</h2>
+<div class="faq-sec padding-block flex-col">
+     <div class="sec-heading">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.heading_para }}</p>
+    </div>
     <div class="faq-block">
         {% for block in section.blocks %}
             <div class="faq-row">
@@ -53,12 +56,7 @@
         align-items: center;
     }
     .faq-sec{
-        display: flex;
-        flex-direction: column;
         width:100%;
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
         padding: 20px;
     }
     .faq-block,
@@ -89,7 +87,12 @@
     {
       "type": "text",
       "label": "t:labels.heading",
-      "id": "faq_heading"
+      "id": "heading"
+    },
+    {
+      "type": "text",
+      "label": "t:labels.heading_para",
+      "id": "heading_para"
     }
   ],
   "blocks": [
@@ -114,7 +117,8 @@
     {
       "name": "FAQ's",
       "settings": {
-        "faq_heading": "Frequently Asked Questions"
+        "heading": "Frequently Asked Questions",
+        "heading_para":"Some Question Answers"
       },
       "blocks": [
         {
