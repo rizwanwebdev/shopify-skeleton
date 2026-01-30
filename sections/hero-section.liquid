@@ -66,9 +66,9 @@
     }
     .hero-col-2{
     padding: 20px;
-    position: relative;
     }
      .hero-col-2 .hero-img{
+      anchor-name: --badge;
     border-radius: 20px;
     box-shadow: 0 0 10px #0000004f;
     overflow: hidden;
@@ -88,9 +88,10 @@
       max-width: fit-content;
     }
     .hero-img-badge{
+      position-anchor: --badge;
       position: absolute;
-      bottom: 0;
-      left: 0;
+      bottom: calc(anchor(bottom) - 20px);
+      left: calc(anchor(left) - 20px);
       background: var(--color-netural);
       border-radius: 10px;
       box-shadow: 0 0 5px #0000004f;
