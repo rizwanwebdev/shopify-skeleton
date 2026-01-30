@@ -5,57 +5,23 @@
             <p>{{ section.settings.sec_heading_para }}</p>
         </div>
         <div class="benifts-grid">
-          <div class="col animate-opacity">
-           <span class="icon primary"> {{ "icon-sparkles.svg" | inline_asset_content }}</span>
+         {% for block in section.blocks %}
+           <div class="col animate-opacity">
+            {% render 'icon', name: block.settings.col_icon_name, size:block.settings.col_icon_size, color: block.settings.col_icon_color,radius: block.settings.col_icon_radius, class: 'icon-bg' %}
+        
             <div class="col-content">
-              <span class="badge primary font-semi small">
-                3 Shades Whiter
+              <span class="badge primary font-semi small"> {{ block.settings.col_step_text }}
               </span>
-              <h4>Professional Whiting</h4>
+              <h4>{{ block.settings.title }}</h4>
 
               <p>
-                Removes years of stains with gentle. See results in just 7 days
+               {{ block.settings.col_extra_info }}
               </p>
             </div>
           </div>
-          <div class="col animate-opacity">
-            <span class="icon primary"> {{ "icon-sparkles.svg" | inline_asset_content }}</span>
-            <div class="col-content">
-              <span class="badge primary font-semi small">
-                3 Shades Whiter
-              </span>
-              <h4>Professional Whiting</h4>
-              <p>
-                Removes years of stains with gentle. See results in just 7 days
-              </p>
-            </div>
-          </div>
-          <div class="col animate-opacity">
-            <span class="icon primary"> {{ "icon-sparkles.svg" | inline_asset_content }}</span>
-                <div class="col-content">
-                <span class="badge primary font-semi small">
-                    3 Shades Whiter
-                </span>
-                <h4>Professional Whiting</h4>
-
-                <p>
-                    Removes years of stains with gentle. See results in just 7 days
-                </p>
-                </div>
-            </div>
-            <div class="col animate-opacity">
-            <span class="icon primary"> {{ "icon-sparkles.svg" | inline_asset_content }}</span>
-            <div class="col-content">
-              <span class="badge primary font-semi medium">
-                3 Shades Whiter
-              </span>
-              <h4>Professional Whiting</h4>
-
-              <p>
-                Removes years of stains with gentle. See results in just 7 days
-              </p>
-            </div>
-          </div>
+          
+         {% endfor %}
+        
         </div>
       </div>
 
@@ -109,19 +75,6 @@
     flex-direction: column;
     gap: 5px;
     }
-
-    .icon {
-    padding: 6px 10px;
-    border-radius: 10px;
-    background: var(--color-card);
-    border: 1px solid var(--color-border);
-    width: fit-content;
-    height: fit-content;
-    }
-    .icon svg{
-      width: 40px;
-      height: 40px;
-    }
     .animate-opacity {
     animation: appear linear;
     animation-timeline: view();
@@ -161,29 +114,56 @@
             "settings": [
                 {
                 "type": "select",
-                "id": "col_icon",
+                "id": "col_icon_name",
                 "label": "pick icon",
                 "options": [
-                  { "value": "star", "label": "star" },
+                  { "value": "award", "label": "award" },
+                  { "value": "sparkles", "label": "sparkles" },
                   { "value": "heart", "label": "heart" },
-                  { "value": "cart", "label": "cart" }
+                  { "value": "shield", "label": "shield" }
                   ],
                   "default": "sparkles"
                 },
                  {
                 "type": "text",
-                "id": "col_step",
-                "label": "col_step number"
+                "id": "col_step_text",
+                "label": "Step number and text"
                 },
                  {
                 "type": "text",
                 "id": "title",
-                "label": "col_title"
+                "label": "Title"
                 },
                  {
                 "type": "text",
                 "id": "col_extra_info",
                 "label": "col_extra_info"
+                }
+                ,
+                 {
+                "type": "range",
+                "id": "col_icon_size",
+                "label": "Icon Size",
+                "min": 12,
+                "max": 80,
+                "step": 2,
+                "default": 24
+                }
+                ,
+                 {
+                "type": "range",
+                "id": "col_icon_radius",
+                "label": "Icon Size",
+                "min": 0,
+                "max": 100,
+                "step": 2,
+                "default": 10
+                }
+                ,
+                 {
+                "type": "color",
+                "id": "col_icon_color",
+                "label": "Icon Color"
                 }
             ]
             }
@@ -199,37 +179,37 @@
               {
               "type": "benift_column",
               "settings": {
-              "col_step":"1",
+              "col_step_text":"1 Shades Whiter",
               "title":"Professional Whiting",
               "col_extra_info":"Removes years of stains with gentle. See results in just 7 days",
-              "col_icon":"sparkles"
+              "col_icon_name":"sparkles"
               }
               },
               {
               "type": "benift_column",
               "settings": {
-              "col_step":"2",
+              "col_step_text":"2 Shades Whiter",
               "title":"Professional Whiting",
               "col_extra_info":"Removes years of stains with gentle. See results in just 7 days",
-              "col_icon":"heart"
+              "col_icon_name":"shield"
               }
               },
               {
               "type": "benift_column",
               "settings": {
-              "col_step":"3",
+              "col_step_text":"3 Shades Whiter",
               "title":"Professional Whiting",
               "col_extra_info":"Removes years of stains with gentle. See results in just 7 days",
-              "col_icon":"shield"
+              "col_icon_name":"heart"
               }
               },
               {
               "type": "benift_column",
               "settings": {
-              "col_step":"4",
-              "title":"Professional Whiting",
+              "col_step_text":"4 Shades Whiter",
+              "title":"Professional Whiting test",
               "col_extra_info":"Removes years of stains with gentle. See results in just 7 days",
-              "col_icon":"award"
+              "col_icon_name":"award"
               }
               }
             ]

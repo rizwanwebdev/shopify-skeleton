@@ -5,15 +5,17 @@
   @param {number} [size] - Optional size in pixels for width/height (defaults to 24)
   @param {string} [color] - Optional CSS color value (defaults to currentColor)
   @param {string} [class] - Optional extra CSS class names to add to the icon wrapper
+  @param {number} [radius] - Optional Border Radius for parent wrapper
 
   @example
   {% render 'icon', name: section.settings.icon %}
-  {% render 'icon', name: 'heart', size: 32, color: '#ff0000' %}
+  {% render 'icon', name: 'heart', size: 32, radius:10, color: '#ff0000' %}
 {% enddoc %}
 
 {% liquid
   assign icon_name = name | default: 'sparkles'
   assign icon_size = size | default: 24
+  assign icon_radius = radius | default: 0
   assign icon_color = color | default: 'currentColor'
 
   case icon_name
@@ -22,16 +24,34 @@
     when 'heart'
       assign icon_file = 'icon-heart.svg'
     when 'shield'
-      assign icon_file = 'icon-shield.svg'
+      assign icon_file = 'icon-shield-check.svg'
+    when 'sparkles'
+      assign icon_file = 'icon-sparkles.svg'
+    when 'truck'
+      assign icon_file = 'icon-truck.svg'
+    when 'wave'
+      assign icon_file = 'icon-waves.svg'
+    when 'circle-dot'
+      assign icon_file = 'icon-circle-dot.svg'
+    when 'circle-check-big'
+      assign icon_file = 'icon-circle-check-big.svg'
+    when 'house'
+      assign icon_file = 'icon-house.svg'
+    when 'quote'
+      assign icon_file = 'icon-quote.svg'
+    when 'dollar-sign'
+      assign icon_file = 'icon-dollar-sign.svg'
+    when 'clock'
+      assign icon_file = 'icon-clock.svg'
     else
       assign icon_file = 'icon-sparkles.svg'
   endcase
 %}
 
 <span
-  class="theme-icon theme-icon--{{ icon_name }} {{ class }}"
+  class="theme-icon theme-icon-{{ icon_name }} {{ class }}"
   aria-hidden="true"
-  style="--icon-size: {{ icon_size }}px; --icon-color: {{ icon_color }};"
+  style="--icon-size: {{ icon_size }}px; --icon-color: {{ icon_color }}; --icon-radius: {{ icon_radius }}px;"
 >
   {{ icon_file | inline_asset_content }}
 </span>
@@ -41,14 +61,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: var(--icon-size, 1.5rem);
-    height: var(--icon-size, 1.5rem);
-    color: var(--icon-color, currentColor);
+    height: fit-content;
+    border-radius: var(--icon-radius);
   }
 
   .theme-icon svg {
-    width: 100%;
-    height: 100%;
-    fill: currentColor;
+    width: var(--icon-size, 1.5rem);
+    fill: none;
+    stroke: var(--icon-color, currentColor);
   }
 {% endstylesheet %}

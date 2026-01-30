@@ -7,16 +7,16 @@
           {{section.settings.hero_rating}}
         </span>
         <span class="hero-rating-icons">
-        <span class="icon">{{ 'icon-truck.svg' | inline_asset_content }}</span>
+       {% render 'icon', name: section.settings.col_icon_name, size:25, color: section.settings.col_icon_color %}
           <span>{{section.settings.hero_shipping}}</span>
         </span>
         <span class="hero-rating-icons">
-          <span class="icon">{{ 'icon-award.svg' | inline_asset_content }}</span>
+          {% render 'icon', name: 'award', size:25, color: section.settings.col_icon_color %}
           <span>{{section.settings.hero_recomended}}</span></span>
     </div>
     <div class="hero-btns">
-      <a class="btn btn-solid" href="{{ section.settings.hero_product.url }}">{{ section.settings.hero_product_btn_text }}</a>
-      <a class="btn btn-outline" href="{{ section.settings.hero_use_btn_link }}">{{ section.settings.hero_use_btn_text }}</a>
+      <a class="button button-solid" href="{{ section.settings.hero_product.url }}">{{ section.settings.hero_product_btn_text }}</a>
+      <a class="button button-outline" href="{{ section.settings.hero_use_btn_link }}">{{ section.settings.hero_use_btn_text }}</a>
     </div>
 </div>
 <div class="hero-col-2">
@@ -34,7 +34,7 @@
   {% endif %}
 </div>
     <div class="hero-img-badge">
-      <span class="badge-icon">{{ 'icon-truck.svg' | inline_asset_content }}</span>
+      {% render 'icon', name: section.settings.col_icon_name, size:section.settings.col_icon_size, color: section.settings.col_icon_color,radius: section.settings.col_icon_radius, class: 'icon-bg' %}
       <span>
         <h4>Free Shipping</h4>
         <p class="medium">All Across Pakistan <sup>🇵🇰</sup></p>
@@ -180,10 +180,44 @@
       "label": "t:labels.hero_use_btn_text"
     },
     {
+      "type": "select",
+      "id": "col_icon_name",
+      "label": "pick icon",
+      "options": [
+        { "value": "truck", "label": "truck" },
+        { "value": "award", "label": "award" },
+        ],
+        "default": "truck"
+      },
+    {
       "type": "url",
       "id": "hero_use_btn_link",
       "label": "t:labels.hero_use_btn_link"
-    }
+      },{
+      "type": "range",
+      "id": "col_icon_size",
+      "label": "Icon Size",
+      "min": 12,
+      "max": 80,
+      "step": 2,
+      "default": 24
+      }
+      ,
+        {
+      "type": "range",
+      "id": "col_icon_radius",
+      "label": "Icon Size",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 50
+      }
+      ,
+        {
+      "type": "color",
+      "id": "col_icon_color",
+      "label": "Icon Color"
+      }
   ],
   "presets": [
   {
