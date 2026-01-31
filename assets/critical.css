@@ -184,6 +184,10 @@ svg {
   max-width: 100%;
   height: auto;
 }
+svg {
+  min-width: 24px;
+  min-height: 24px;
+}
 
 input,
 textarea,
@@ -303,6 +307,13 @@ body {
 .primary {
   color: var(--color-primary);
 }
+.foreground {
+  color: var(--color-foreground);
+}
+
+.larger {
+  font-size: 18px;
+}
 .large {
   font-size: 17px;
 }
@@ -316,10 +327,10 @@ body {
   font-size: 12px;
 }
 .font-semi {
-  font-weight: var(--font-primary-weight-semibold);
+  font-weight: 500;
 }
 .bold {
-  font-weight: var(--font-primary-weight-bold);
+  font-weight: 600;
 }
 
 /* ***********************Gloabl  section setting */

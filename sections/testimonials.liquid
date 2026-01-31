@@ -1,0 +1,196 @@
+<div class="testimonial-sec flex-col padding-block">
+    <div class="sec-heading">
+        <h2>{{ section.settings.heading }}</h2>
+        <p class="larger">{{ section.settings.heading_para }}</p>
+    </div>
+    <div class="t-grid">
+        {% for block in section.blocks %}
+            <div class="testimonial">
+                <p class="medium">{{ block.settings.star_ratings }}</p>
+                <div class="t-content">
+                    <span class="t-icon"> {{ "icon-quote.svg" | inline_asset_content }}</span>
+                    <p>{{ block.settings.title }}</p>
+                </div>
+                <hr>
+                <div class="t-name">
+                    <span class="larger foreground font-semi">{{ block.settings.name }}</span>
+                    <p class="medium">{{ block.settings.profession }}</p>
+                </div>
+            </div>
+        {% endfor %}         
+    </div>
+    <div class="bottom-review">
+        <div class="b-review">
+            <h4>{{ section.settings.text }}</h4>
+            <p class="medium">{{ section.settings.reviews_bottom }}</p>
+        </div>
+
+    </div>
+</div>
+{% stylesheet %}
+
+    .t-grid{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+    .testimonial{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        border: 1px solid var(--color-border);
+        border-radius: 10px;
+        padding: 10px;
+        color: var(--color-foreground);
+    }
+    .t-content{
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+    }
+    .t-icon{
+        min-width: 30px;
+        min-height: 30px;
+    }
+    .t-name{
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .bottom-review{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .b-review{
+        width: fit-content;
+        padding: 15px;
+        border: 1px solid var(--color-border);
+        background: var(--color-section);
+        border-radius: 10px;
+    }
+{% endstylesheet %}
+{% schema %}
+    {
+        "name": "Testimonials",
+        "settings": [
+            {
+            "type": "text",
+            "id":"heading",
+            "label": "t:labels.heading"
+            },
+            {
+            "type": "text",
+            "id":"heading_para",
+            "label": "t:labels.heading_para"
+            },
+            {
+            "type": "text",
+            "id":"text",
+            "label": "Reviews Persentage"
+            },
+            {
+            "type": "text",
+            "id":"reviews_bottom",
+            "label": "Reviews Extra"
+            }
+        ], 
+        "blocks": [
+            {
+            "type": "testimonial",
+            "name": "Testimonial",
+            "settings": [
+                {
+                "type": "text",
+                "id": "title",
+                "label": "Review"
+                },{
+                "type": "text",
+                "id": "star_ratings",
+                "label": "star_ratings"
+                },
+                {
+                "type": "text",
+                "id": "name",
+                "label": "Name"
+                },
+                {
+                "type": "text",
+                "id": "profession",
+                "label": "Profession"
+                }
+            ]
+            }
+            
+        ],
+        "presets": [
+            {
+            "name": "Testimonials",
+            "settings": {
+                "heading":"Trusted By Thousands",
+                "heading_para":"Join the SmileBright community and see why our customers love their <br>results",
+                "text":"⭐⭐⭐⭐⭐ 4.9/5",
+                "reviews_bottom":"Based on 2847 reviews"
+            },
+            "blocks": [
+                    {
+                    "type": "testimonial",
+                    "settings": {
+                        "title":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quae asperiores perferendis nihil exercitationem quidem rerum natus autem! Ad, omnis.",
+                        "star_ratings":"⭐⭐⭐⭐⭐ 4.9/5",
+                        "name":"Rizwan",
+                        "profession":"Softwear Developer"
+                        }
+                   },
+                   {
+                    "type": "testimonial",
+                    "settings": {
+                        "title":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quae asperiores perferendis nihil exercitationem quidem rerum natus autem! Ad, omnis.",
+                        "star_ratings":"⭐⭐⭐⭐⭐ 4.9/5",
+                        "name":"Rizwan",
+                        "profession":"Softwear Developer"
+                        }
+                   },
+                   {
+                    "type": "testimonial",
+                    "settings": {
+                        "title":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quae asperiores perferendis nihil exercitationem quidem rerum natus autem! Ad, omnis.",
+                        "star_ratings":"⭐⭐⭐⭐⭐ 4.9/5",
+                        "name":"Rizwan",
+                        "profession":"Softwear Developer"
+                        }
+                   },
+                   {
+                    "type": "testimonial",
+                    "settings": {
+                        "title":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quae asperiores perferendis nihil exercitationem quidem rerum natus autem! Ad, omnis.",
+                        "star_ratings":"⭐⭐⭐⭐⭐ 4.9/5",
+                        "name":"Rizwan",
+                        "profession":"Softwear Developer"
+                        }
+                   }
+                   ,{
+                    "type": "testimonial",
+                    "settings": {
+                        "title":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quae asperiores perferendis nihil exercitationem quidem rerum natus autem! Ad, omnis.",
+                        "star_ratings":"⭐⭐⭐⭐⭐ 4.9/5",
+                        "name":"Rizwan",
+                        "profession":"Softwear Developer"
+                        }
+                   },
+                   {
+                    "type": "testimonial",
+                    "settings": {
+                        "title":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quae asperiores perferendis nihil exercitationem quidem rerum natus autem! Ad, omnis.",
+                        "star_ratings":"⭐⭐⭐⭐⭐ 4.9/5",
+                        "name":"Rizwan",
+                        "profession":"Softwear Developer"
+                        }
+                   }
+            ]
+           }
+        ]
+    }
+{% endschema %}
