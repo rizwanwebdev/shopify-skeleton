@@ -26,7 +26,7 @@
                     loading: 'lazy'
                 }}
             {% else %}
-                {{ 'lifestyle-1' | placeholder_svg_tag: 'transform-img-holder' }}
+                {{ 'hero-apparel-1' | placeholder_svg_tag: 'transform-img-holder' }}
             {% endif %}
             <span class="img-badge">After Few Days</span>
         </div>
@@ -50,6 +50,9 @@
     }
     .transform-img-holder{
         aspect-ratio: 4/3;
+        display: block;
+        width: 100%;
+        height: 100%;
     }
     .images-grid{
         display: grid;
