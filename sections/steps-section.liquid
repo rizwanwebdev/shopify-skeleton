@@ -1,42 +1,42 @@
-<div class="steps-sec padding-block flex-col">
-<div class="sec-heading">
-    <h2>{{ section.settings.sec_heading }}</h2>
-    <p>{{ section.settings.sec_heading_para }}</p>
-</div>
-<div class="steps-sec-content">
-    <div class="col fade-out">
-    <div class="step-blob">
-        <span class="icon-blob primary">
-        {{ "icon-circle-dot.svg" | inline_asset_content }}
-        <span class="icon-sup small">1</span>
-        </span>
+<div class="steps-sec padding-block flex-col full-width">
+    <div class="sec-heading">
+        <h2>{{ section.settings.sec_heading }}</h2>
+        <p>{{ section.settings.sec_heading_para }}</p>
     </div>
-    <span class="font-semi medium primary">Step 1</span>
-    <h4>Mix Drops</h4>
-    <p>Poure drops from both bottles and mix those</p>
-    </div>
-    <div class="col fade-out">
-    <div class="step-blob">
-        <span class="icon-blob primary">
-        {{ "icon-waves.svg" | inline_asset_content }}
-        <span class="icon-sup small">2</span>
-        </span>
-    </div>
-    <span class="font-semi medium primary">Step 2</span>
-    <h4>Brush Gently</h4>
-    <p>Then brush gently or apply with cotton</p>
-    </div>
-    <div class="col fade-out">
-    <div class="step-blob">
-        <span class="icon-blob primary">
-        {{ "icon-sparkles.svg" | inline_asset_content }}
-        <span class="icon-sup small">3</span>
-        </span>
-    </div>
-    <span class="font-semi medium primary">Step 3</span>
-    <h4>Enjoy Results</h4>
-    <p>You will get instant results from day 1</p>
-    </div>
+    <div class="steps-sec-content">
+        <div class="col fade-out">
+        <div class="step-blob">
+            <span class="icon-blob primary">
+            {{ "icon-circle-dot.svg" | inline_asset_content }}
+            <span class="icon-sup small">1</span>
+            </span>
+        </div>
+        <span class="font-semi medium primary">Step 1</span>
+        <h4>Mix Drops</h4>
+        <p>Poure drops from both bottles and mix those</p>
+        </div>
+        <div class="col fade-out">
+        <div class="step-blob">
+            <span class="icon-blob primary">
+            {{ "icon-waves.svg" | inline_asset_content }}
+            <span class="icon-sup small">2</span>
+            </span>
+        </div>
+        <span class="font-semi medium primary">Step 2</span>
+        <h4>Brush Gently</h4>
+        <p>Then brush gently or apply with cotton</p>
+        </div>
+        <div class="col fade-out">
+        <div class="step-blob">
+            <span class="icon-blob primary">
+            {{ "icon-sparkles.svg" | inline_asset_content }}
+            <span class="icon-sup small">3</span>
+            </span>
+        </div>
+        <span class="font-semi medium primary">Step 3</span>
+        <h4>Enjoy Results</h4>
+        <p>You will get instant results from day 1</p>
+        </div>
     </div>
     <div class="steps-approval">
         <span class="blue-dot"></span>
@@ -46,6 +46,10 @@
 {% stylesheet %}
     div:has(.steps-sec){
     background-color: var(--color-section);
+    }
+    .steps-sec{
+        width: 100%;
+        padding-inline: 20px;
     }
     .steps-sec-content {
     position: relative;

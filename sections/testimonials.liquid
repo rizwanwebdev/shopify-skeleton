@@ -5,8 +5,10 @@
     </div>
     <div class="t-grid">
         {% for block in section.blocks %}
-            <div class="testimonial">
-                <p class="medium">{{ block.settings.star_ratings }}</p>
+            <div class="testimonial animate-x">
+                <p class="medium review-stars">
+                    {% render 'stars', stars_numbers:section.settings.review_stars  %}
+                    {{ block.settings.star_ratings }}</p>
                 <div class="t-content">
                     <span class="t-icon"> {{ "icon-quote.svg" | inline_asset_content }}</span>
                     <p>{{ block.settings.title }}</p>
@@ -21,7 +23,7 @@
     </div>
     <div class="bottom-review">
         <div class="b-review">
-            <h4> {% render 'stars', stars_numbers:section.settings.review_stars  %} {{ section.settings.text }}</h4>
+            <h4> {% render 'stars', stars_numbers:section.settings.total_stars  %} {{ section.settings.text }}</h4>
             <p class="medium">{{ section.settings.reviews_bottom }}</p>
         </div>
 
@@ -33,6 +35,17 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 24px;
+    }
+    @media screen and (max-width:900px){
+        .t-grid{
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+    }
+    @media screen and (max-width:499px){
+        .t-grid{
+        grid-template-columns: 1fr;
+    }
     }
     .testimonial{
         display: flex;
@@ -47,10 +60,6 @@
         display: flex;
         flex-direction: row;
         justify-content: start;
-    }
-    .t-icon{
-        min-width: 30px;
-        min-height: 30px;
     }
     .t-name{
         display: flex;
@@ -74,6 +83,13 @@
         flex-direction: column;
         gap: 10px;
     }
+    .t-icon svg{
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        min-height: 30px;
+    }
+    .review-stars,
     .b-review h4{
         display: flex;
         gap: 8px;
@@ -106,7 +122,7 @@
             ,
             {
             "type": "range",
-            "id":"review_stars",
+            "id":"total_stars",
             "label": "Stars",
             "min": 0,
             "max": 5,
@@ -136,6 +152,14 @@
                 "type": "text",
                 "id": "profession",
                 "label": "Profession"
+                },
+                {
+                "type": "range",
+                "id":"review_stars",
+                "label": "Stars",
+                "min": 0,
+                "max": 5,
+                "default":5
                 }
             ]
             }
@@ -155,7 +179,7 @@
                     "type": "testimonial",
                     "settings": {
                         "title":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quae asperiores perferendis nihil exercitationem quidem rerum natus autem! Ad, omnis.",
-                        "star_ratings":"⭐⭐⭐⭐⭐ 4.9/5",
+                        "star_ratings":"4.9/5",
                         "name":"Rizwan",
                         "profession":"Softwear Developer"
                         }
@@ -164,7 +188,7 @@
                     "type": "testimonial",
                     "settings": {
                         "title":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quae asperiores perferendis nihil exercitationem quidem rerum natus autem! Ad, omnis.",
-                        "star_ratings":"⭐⭐⭐⭐⭐ 4.9/5",
+                        "star_ratings":"4.9/5",
                         "name":"Rizwan",
                         "profession":"Softwear Developer"
                         }
@@ -173,7 +197,7 @@
                     "type": "testimonial",
                     "settings": {
                         "title":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quae asperiores perferendis nihil exercitationem quidem rerum natus autem! Ad, omnis.",
-                        "star_ratings":"⭐⭐⭐⭐⭐ 4.9/5",
+                        "star_ratings":"4.9/5",
                         "name":"Rizwan",
                         "profession":"Softwear Developer"
                         }
@@ -182,7 +206,7 @@
                     "type": "testimonial",
                     "settings": {
                         "title":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quae asperiores perferendis nihil exercitationem quidem rerum natus autem! Ad, omnis.",
-                        "star_ratings":"⭐⭐⭐⭐⭐ 4.9/5",
+                        "star_ratings":"4.9/5",
                         "name":"Rizwan",
                         "profession":"Softwear Developer"
                         }
@@ -191,7 +215,7 @@
                     "type": "testimonial",
                     "settings": {
                         "title":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quae asperiores perferendis nihil exercitationem quidem rerum natus autem! Ad, omnis.",
-                        "star_ratings":"⭐⭐⭐⭐⭐ 4.9/5",
+                        "star_ratings":"4.9/5",
                         "name":"Rizwan",
                         "profession":"Softwear Developer"
                         }
@@ -200,7 +224,7 @@
                     "type": "testimonial",
                     "settings": {
                         "title":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quae asperiores perferendis nihil exercitationem quidem rerum natus autem! Ad, omnis.",
-                        "star_ratings":"⭐⭐⭐⭐⭐ 4.9/5",
+                        "star_ratings":"4.9/5",
                         "name":"Rizwan",
                         "profession":"Softwear Developer"
                         }

@@ -59,6 +59,16 @@
       },
       {
         "type": "range",
+        "id": "padding_inline",
+        "min": 10,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "label": "t:labels.padding_inline",
+        "default": 50
+      },
+      {
+        "type": "range",
         "id": "padding_block",
         "min": 10,
         "max": 150,
