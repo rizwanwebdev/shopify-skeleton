@@ -1,47 +1,47 @@
 <div class="hero-grid padding-block  padding-inline">
-<div class="hero-col-1 hero-left">
-    <h1>{{ section.settings.hero_heading_text }}</h1>
-    <p>{{ section.settings.hero_heading_para }}</p>
-    <div class="hero-star-rating">
-        <span class="hero_rating">
-          {% render 'stars', stars_numbers: 5 %}
-          {{section.settings.hero_rating}}
+  <div class="hero-col-1 hero-left">
+      <h1>{{ section.settings.hero_heading_text }}</h1>
+      <p>{{ section.settings.hero_heading_para }}</p>
+      <div class="hero-star-rating">
+          <span class="hero_rating">
+            {% render 'stars', stars_numbers: 5 %}
+            {{section.settings.hero_rating}}
+          </span>
+          <span class="hero-rating-icons">
+        {% render 'icon', name: section.settings.col_icon_name, size:25, color: section.settings.col_icon_color %}
+            <span>{{section.settings.hero_shipping}}</span>
+          </span>
+          <span class="hero-rating-icons">
+            {% render 'icon', name: 'award', size:25, color: section.settings.col_icon_color %}
+            <span>{{section.settings.hero_recomended}}</span></span>
+      </div>
+      <div class="hero-btns">
+        <a class="button bounce-top button-solid" href="{{ section.settings.hero_product.url }}">{{ section.settings.hero_product_btn_text }}</a>
+        <a class="button bounce-top button-outline" href="{{ section.settings.hero_use_btn_link }}">{{ section.settings.hero_use_btn_text }}</a>
+      </div>
+  </div>
+  <div class="hero-col-2 hero-right">
+      <div class="hero-img">
+    {% if section.settings.hero_background_image %}
+      {{ section.settings.hero_background_image
+        | image_url: width: 700
+        | image_tag:
+          alt: 'sections.hero.hero_background_image_alt',
+          loading: 'eager',
+          fetchpriority: 'high'
+      }}
+    {% else %}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero-img__placeholder' }}
+    {% endif %}
+  </div>
+      <div class="hero-img-badge zoomInLeft">
+        {% render 'icon', name: section.settings.col_icon_name, size:section.settings.col_icon_size, color: section.settings.col_icon_color,radius: section.settings.col_icon_radius, class: 'icon-bg' %}
+        <span>
+          <h4>Free Shipping</h4>
+          <p class="medium">All Across Pakistan <sup>🇵🇰</sup></p>
         </span>
-        <span class="hero-rating-icons">
-       {% render 'icon', name: section.settings.col_icon_name, size:25, color: section.settings.col_icon_color %}
-          <span>{{section.settings.hero_shipping}}</span>
-        </span>
-        <span class="hero-rating-icons">
-          {% render 'icon', name: 'award', size:25, color: section.settings.col_icon_color %}
-          <span>{{section.settings.hero_recomended}}</span></span>
-    </div>
-    <div class="hero-btns">
-      <a class="button bounce-top button-solid" href="{{ section.settings.hero_product.url }}">{{ section.settings.hero_product_btn_text }}</a>
-      <a class="button bounce-top button-outline" href="{{ section.settings.hero_use_btn_link }}">{{ section.settings.hero_use_btn_text }}</a>
-    </div>
-</div>
-<div class="hero-col-2 hero-right">
-    <div class="hero-img">
-  {% if section.settings.hero_background_image %}
-    {{ section.settings.hero_background_image
-      | image_url: width: 700
-      | image_tag:
-        alt: 'sections.hero.hero_background_image_alt',
-        loading: 'eager',
-        fetchpriority: 'high'
-    }}
-  {% else %}
-    {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero-img__placeholder' }}
-  {% endif %}
-</div>
-    <div class="hero-img-badge zoomInLeft">
-      {% render 'icon', name: section.settings.col_icon_name, size:section.settings.col_icon_size, color: section.settings.col_icon_color,radius: section.settings.col_icon_radius, class: 'icon-bg' %}
-      <span>
-        <h4>Free Shipping</h4>
-        <p class="medium">All Across Pakistan <sup>🇵🇰</sup></p>
-      </span>
-    </div>
-</div>
+      </div>
+  </div>
 
 </div>
 {% stylesheet %}
@@ -136,37 +136,37 @@
       }
     }
     .zoomInLeft {
-    animation-name: zoomInLeft;
-    animation-duration: 1.5s;
-    animation-fill-mode: both;
+      animation-name: zoomInLeft;
+      animation-duration: 1.5s;
+      animation-fill-mode: both;
     }
     @keyframes zoomInLeft {
-    0% {
-    opacity: 0;
-    transform: scale3d(.1, .1, .1) translate3d(-1000px, 0, 0);
-    animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+      0% {
+      opacity: 0;
+      transform: scale3d(.1, .1, .1) translate3d(-1000px, 0, 0);
+      animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
     }
     60% {
-    opacity: 1;
-    transform: scale3d(.475, .475, .475) translate3d(10px, 0, 0);
-    animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+      opacity: 1;
+      transform: scale3d(.475, .475, .475) translate3d(10px, 0, 0);
+      animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
     }
     } 
     .bounce-top {
 	  animation: bounce-top 1s both;
     }
     @keyframes bounce-top {
-    0% {
-    opacity: 0;
-    transform: translateX(-2000px);
-  }
-  60% {
-    opacity: 1;
-    transform: translateX(30px);
-  }
-  80% { transform: translateX(-10px); }
-  100% { transform: translateX(0); }
-  }
+      0% {
+      opacity: 0;
+      transform: translateX(-2000px);
+    }
+    60% {
+      opacity: 1;
+      transform: translateX(30px);
+    }
+    80% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+    }
 
 
 {% endstylesheet %}
