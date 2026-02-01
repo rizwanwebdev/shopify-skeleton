@@ -1,0 +1,112 @@
+<div class="why-us-sec padding-block padding-inline flex-col">
+    <div class="sec-heading">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.heading_para }}</p>
+  </div>
+  <div class="table">
+    <table>
+        <thead>
+            <tr>
+                <th class="foreground bold">Features</th>
+                <th class="bold">Tranditional Dental</th>
+                <th class="primary bold">{{ shop.name }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="foreground font-semi">Cost Per Year</td>
+                <td>$600-1200</td>
+                <td class="primary font-semi">$149 One Time</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+{% stylesheet %}
+    .why-us-sec{
+        background: var(--color-section)
+    }
+    .table{
+        min-width: 90%;
+        border-radius: 20px;
+        border: 2px solid var(--color-border);
+        box-shadow: 0 0 15px 1px #00000014;
+        overflow: hidden;
+    }
+    .table table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .table table th{
+        background: var(--color-card);
+        border-bottom: 1px solid var(--color-border);
+    }
+    .table table tr
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .table table tr:not(:last-child){
+        border-bottom: 1px solid var(--color-border);
+    }
+    .table table td,
+    .table table th{
+        padding: 10px 20px;
+        flex: 1;
+        text-align: center;
+        width: 100%;
+    }
+{% endstylesheet %}
+
+{% schema %}
+    {
+    "name": "Why Choose Us",
+    "settings": [
+        {
+        "type": "text",
+        "id": "heading",
+        "label": "t:labels.heading"
+        },
+        {
+        "type": "text",
+        "id": "heading_para",
+        "label": "t:labels.heading_para"
+        }
+        ],
+        "blocks": [
+            {
+                "type": "table",
+                "name":"Row",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "sell_1",
+                        "label": "t:labels.text"
+                    },
+                    {
+                        "type": "text",
+                        "id": "sell_2",
+                        "label": "t:labels.text"
+                    },
+                    {
+                        "type": "text",
+                        "id": "sell_3",
+                        "label": "t:labels.text"
+                    }
+                ]
+            }
+        ]
+        ,
+        "presets": [
+            {
+                "name": "Why Choose Us",
+                "settings": {
+                "heading":"Why Choose SmileBright?",
+                "heading_para":"Get professional results without the professional price tag"
+                }
+            }
+        ]
+    }
+{% endschema %}
