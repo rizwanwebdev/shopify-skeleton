@@ -7,17 +7,19 @@
     <table>
         <thead>
             <tr>
-                <th class="foreground bold">Features</th>
-                <th class="bold">Tranditional Dental</th>
-                <th class="primary bold">{{ shop.name }}</th>
+                <th class="foreground bold">{{ section.settings.th_1 }}</th>
+                <th class="bold">{{ section.settings.th_2 }}</th>
+                <th class="primary bold">{{ section.settings.th_3 | shop.name }}</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="foreground font-semi">Cost Per Year</td>
-                <td>$600-1200</td>
-                <td class="primary font-semi">$149 One Time</td>
-            </tr>
+            {% for block in section.blocks %}
+                <tr>
+                    <td class="foreground font-semi">{{ block.settings.title }}</td>
+                    <td>{{ block.settings.cell_2 }}</td>
+                    <td class="primary font-semi">{{ block.settings.cell_3 }}</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
   </div>
@@ -73,26 +75,41 @@
         "type": "text",
         "id": "heading_para",
         "label": "t:labels.heading_para"
+        },
+        {
+            "type": "text",
+            "id": "th_1",
+            "label": "t:labels.text"
+        },
+        {
+            "type": "text",
+            "id": "th_2",
+            "label": "t:labels.text"
+        },
+        {
+            "type": "text",
+            "id": "th_3",
+            "label": "t:labels.text"
         }
         ],
         "blocks": [
             {
-                "type": "table",
+                "type": "table_row",
                 "name":"Row",
                 "settings": [
                     {
                         "type": "text",
-                        "id": "sell_1",
+                        "id": "title",
                         "label": "t:labels.text"
                     },
                     {
                         "type": "text",
-                        "id": "sell_2",
+                        "id": "cell_2",
                         "label": "t:labels.text"
                     },
                     {
                         "type": "text",
-                        "id": "sell_3",
+                        "id": "cell_3",
                         "label": "t:labels.text"
                     }
                 ]
@@ -104,9 +121,48 @@
                 "name": "Why Choose Us",
                 "settings": {
                 "heading":"Why Choose SmileBright?",
-                "heading_para":"Get professional results without the professional price tag"
-                }
+                "heading_para":"Get professional results without the professional price tag",
+                "th_1":"Features",
+                "th_2":"Tranditional Dental",
+                },
+                "blocks": [
+                    {
+                        "type": "table_row",
+                        "settings": {
+                            "title":"Cost Per Year",
+                            "cell_2":"$600-1200",
+                            "cell_3":"$149 One Time"
+                        }
+                        
+                    },{
+                        "type": "table_row",
+                        "settings": {
+                            "title":"Cost Per Year",
+                            "cell_2":"$600-1200",
+                            "cell_3":"$149 One Time"
+                        }
+                        
+                    },{
+                        "type": "table_row",
+                        "settings": {
+                            "title":"Cost Per Year",
+                            "cell_2":"$600-1200",
+                            "cell_3":"$149 One Time"
+                        }
+                        
+                    },{
+                        "type": "table_row",
+                        "settings": {
+                            "title":"Cost Per Year",
+                            "cell_2":"$600-1200",
+                            "cell_3":"$149 One Time"
+                        }
+                        
+                    }
+                ]
+                
             }
+            
         ]
     }
 {% endschema %}
