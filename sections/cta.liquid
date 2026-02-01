@@ -1,0 +1,53 @@
+<div class="cta-sec padding-block padding-inline flex-col">
+     <div class="sec-heading">
+        <h2 class="h1 netural">{{ section.settings.sec_heading }}</h2>
+        <p class="larger netural">{{ section.settings.sec_heading_para }}</p>
+    </div>
+    <div class="price-card">
+        <p  class="largercenter"><span class="netural">$299</span> <span class="netural h2 bold center">$149</span></p>
+        <p  class=" netural center">Limited time offer - 50% off</p>
+        <p class="small netural center">Offer end in 48 hours</p>
+    </div>
+    <button class="get-cta">
+        Get SmileBright Now
+    </button>
+    <div class="cta-extra">
+        <p class="netural"><span>shield</span> money back guaranter</p>
+        <p class="netural"><span>truck</span> money back guaranter</p>
+        <p class="netural"><span>clock</span> money back guaranter</p>
+    </div>
+    <p class="center netural">⚡ Only 47 units left in stock</p>
+</div>
+{% stylesheet %}
+
+    .cta-sec{
+        width: 100%;
+        background: linear-gradient(135deg, var(--color-primary) 0%,var(--color-card) 100%);
+    }
+{% endstylesheet %}
+{% schema %}
+    {
+        "name": "Call To Action",
+        "settings": [
+            {
+                "type": "text",
+                "id": "sec_heading",
+                "label": "t:labels.heading"
+            },
+            {
+                "type": "text",
+                "id": "sec_heading_para",
+                "label": "t:labels.heading_para"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Call To Action",
+                "settings": {
+                    "sec_heading":"Transform Your Smile Today",
+                    "sec_heading_para":"Join thousands who've discovered professional level teeth cleaning at home",
+                }
+            }
+        ]
+    }
+{% endschema %}

@@ -307,6 +307,9 @@ body {
 .foreground {
   color: var(--color-foreground);
 }
+.netural {
+  color: var(--color-netural);
+}
 
 .larger {
   font-size: 18px;
