@@ -324,10 +324,13 @@ body {
   font-size: 12px;
 }
 .font-semi {
-  font-weight: 500;
+  font-weight: var(--font-primary-weight-bold);
 }
 .bold {
-  font-weight: 600;
+  font-weight: var(--font-primary-weight-semibold);
+}
+.center {
+  text-align: center;
 }
 hr {
   border: 0;

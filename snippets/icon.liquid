@@ -9,7 +9,7 @@
 
   @example
   {% render 'icon', name: section.settings.icon %}
-  {% render 'icon', name: 'heart', size: 32, radius:10, color: '#ff0000' %}
+  {% render 'icon', name: 'heart', size: 32, radius:10, color: '#7775D2' %}
 {% enddoc %}
 
 {% liquid
@@ -39,7 +39,7 @@
       assign icon_file = 'icon-house.svg'
     when 'quote'
       assign icon_file = 'icon-quote.svg'
-    when 'dollar-sign'
+    when 'dollar'
       assign icon_file = 'icon-dollar-sign.svg'
     when 'clock'
       assign icon_file = 'icon-clock.svg'
@@ -61,7 +61,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: fit-content;
+    min-height: fit-content;
+    min-width: fit-content;
     border-radius: var(--icon-radius);
   }
 

@@ -9,7 +9,7 @@
             <tr>
                 <th class="foreground bold">{{ section.settings.th_1 }}</th>
                 <th class="bold">{{ section.settings.th_2 }}</th>
-                <th class="primary bold">{{ section.settings.th_3 | shop.name }}</th>
+                <th class="primary bold">{{ section.settings.th_3 | default: shop.name }}</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +22,28 @@
             {% endfor %}
         </tbody>
     </table>
+  </div>
+  <div class="table-additional">
+    <div class="additional-content">
+        {% render 'icon', name: 'dollar', size: 30, radius: 40,class: 'icon-bg' %}
+        <h5 class="center">Save $450 Annually</h5>
+        <p class="smaller center">One-time investment vs. repeated denteal visits</p>
+    </div>
+    <div class="additional-content">
+        {% render 'icon', name: 'dollar', size: 30, radius: 40,class: 'icon-bg' %}
+        <h5 class="center">Save $450 Annually</h5>
+        <p class="smaller center">One-time investment vs. repeated denteal visits</p>
+    </div>
+    <div class="additional-content">
+        {% render 'icon', name: 'dollar', size: 30, radius: 40,class: 'icon-bg' %}
+        <h5 class="center">Save $450 Annually</h5>
+        <p class="smaller center">One-time investment vs. repeated denteal visits</p>
+    </div>
+      <div class="additional-content">
+        {% render 'icon', name: 'dollar', size: 30, radius: 40,class: 'icon-bg' %}
+        <h5 class="center">Save $450 Annually</h5>
+        <p class="smaller center">One-time investment vs. repeated denteal visits</p>
+    </div>
   </div>
 </div>
 {% stylesheet %}
@@ -60,6 +82,24 @@
         text-align: center;
         width: 100%;
     }
+    .table-additional{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        justify-content: center;
+    }
+    .additional-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+    @media screen and (max-width:767px){
+    .table-additional{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    }
 {% endstylesheet %}
 
 {% schema %}
@@ -92,77 +132,77 @@
             "label": "t:labels.text"
         }
         ],
-        "blocks": [
-            {
-                "type": "table_row",
-                "name":"Row",
-                "settings": [
-                    {
-                        "type": "text",
-                        "id": "title",
-                        "label": "t:labels.text"
-                    },
-                    {
-                        "type": "text",
-                        "id": "cell_2",
-                        "label": "t:labels.text"
-                    },
-                    {
-                        "type": "text",
-                        "id": "cell_3",
-                        "label": "t:labels.text"
-                    }
-                ]
-            }
-        ]
-        ,
-        "presets": [
-            {
-                "name": "Why Choose Us",
-                "settings": {
-                "heading":"Why Choose SmileBright?",
-                "heading_para":"Get professional results without the professional price tag",
-                "th_1":"Features",
-                "th_2":"Tranditional Dental",
+    "blocks": [
+        {
+            "type": "table_row",
+            "name":"Row",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "t:labels.text"
                 },
-                "blocks": [
-                    {
-                        "type": "table_row",
-                        "settings": {
-                            "title":"Cost Per Year",
-                            "cell_2":"$600-1200",
-                            "cell_3":"$149 One Time"
-                        }
-                        
-                    },{
-                        "type": "table_row",
-                        "settings": {
-                            "title":"Cost Per Year",
-                            "cell_2":"$600-1200",
-                            "cell_3":"$149 One Time"
-                        }
-                        
-                    },{
-                        "type": "table_row",
-                        "settings": {
-                            "title":"Cost Per Year",
-                            "cell_2":"$600-1200",
-                            "cell_3":"$149 One Time"
-                        }
-                        
-                    },{
-                        "type": "table_row",
-                        "settings": {
-                            "title":"Cost Per Year",
-                            "cell_2":"$600-1200",
-                            "cell_3":"$149 One Time"
-                        }
-                        
+                {
+                    "type": "text",
+                    "id": "cell_2",
+                    "label": "t:labels.text"
+                },
+                {
+                    "type": "text",
+                    "id": "cell_3",
+                    "label": "t:labels.text"
+                }
+            ]
+        }
+    ]
+    ,
+    "presets": [
+        {
+            "name": "Why Choose Us",
+            "settings": {
+            "heading":"Why Choose SmileBright?",
+            "heading_para":"Get professional results without the professional price tag",
+            "th_1":"Features",
+            "th_2":"Tranditional Dental",
+            },
+            "blocks": [
+                {
+                    "type": "table_row",
+                    "settings": {
+                        "title":"Cost Per Year",
+                        "cell_2":"$600-1200",
+                        "cell_3":"$149 One Time"
                     }
-                ]
-                
-            }
+                    
+                },{
+                    "type": "table_row",
+                    "settings": {
+                        "title":"Cost Per Year2",
+                        "cell_2":"$600-1200",
+                        "cell_3":"$149 One Time"
+                    }
+                    
+                },{
+                    "type": "table_row",
+                    "settings": {
+                        "title":"Cost Per Year3",
+                        "cell_2":"$600-1200",
+                        "cell_3":"$149 One Time"
+                    }
+                    
+                },{
+                    "type": "table_row",
+                    "settings": {
+                        "title":"Cost Per Year4",
+                        "cell_2":"$600-1200",
+                        "cell_3":"$149 One Time"
+                    }
+                    
+                }
+            ]
             
-        ]
+        }
+        
+    ]
     }
 {% endschema %}
