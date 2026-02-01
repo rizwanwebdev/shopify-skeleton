@@ -14,14 +14,14 @@
                 <hr>
                 <div class="t-name">
                     <span class="larger foreground font-semi">{{ block.settings.name }}</span>
-                    <p class="medium">{{ block.settings.profession }}</p>
+                    <p class="small">{{ block.settings.profession }}</p>
                 </div>
             </div>
         {% endfor %}         
     </div>
     <div class="bottom-review">
         <div class="b-review">
-            <h4>{{ section.settings.text }}</h4>
+            <h4> {% render 'stars', stars_numbers:section.settings.review_stars  %} {{ section.settings.text }}</h4>
             <p class="medium">{{ section.settings.reviews_bottom }}</p>
         </div>
 
@@ -32,7 +32,7 @@
     .t-grid{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
+        gap: 24px;
     }
     .testimonial{
         display: flex;
@@ -40,7 +40,7 @@
         gap: 16px;
         border: 1px solid var(--color-border);
         border-radius: 10px;
-        padding: 10px;
+        padding: 16px;
         color: var(--color-foreground);
     }
     .t-content{
@@ -66,10 +66,17 @@
     }
     .b-review{
         width: fit-content;
-        padding: 15px;
+        padding: 20px 25px;
         border: 1px solid var(--color-border);
         background: var(--color-section);
         border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .b-review h4{
+        display: flex;
+        gap: 8px;
     }
 {% endstylesheet %}
 {% schema %}
@@ -95,6 +102,15 @@
             "type": "text",
             "id":"reviews_bottom",
             "label": "Reviews Extra"
+            }
+            ,
+            {
+            "type": "range",
+            "id":"review_stars",
+            "label": "Stars",
+            "min": 0,
+            "max": 5,
+            "default":5
             }
         ], 
         "blocks": [
@@ -131,7 +147,7 @@
             "settings": {
                 "heading":"Trusted By Thousands",
                 "heading_para":"Join the SmileBright community and see why our customers love their <br>results",
-                "text":"⭐⭐⭐⭐⭐ 4.9/5",
+                "text":"4.9/5",
                 "reviews_bottom":"Based on 2847 reviews"
             },
             "blocks": [

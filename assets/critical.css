@@ -332,7 +332,10 @@ body {
 .bold {
   font-weight: 600;
 }
-
+hr {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+}
 /* ***********************Gloabl  section setting */
 .sec-heading {
   display: flex;
