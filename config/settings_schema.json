@@ -65,7 +65,7 @@
         "step": 5,
         "unit": "px",
         "label": "t:labels.padding_inline",
-        "default": 50
+        "default": 15
       },
       {
         "type": "range",

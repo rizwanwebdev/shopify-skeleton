@@ -1,4 +1,7 @@
-<header>
+<header class="padding-inline">
+  <button class="menu-open" id="menu_open">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
+  </button>
   {% render 'header-logo',
     logo_image: section.settings.logo_image,
     logo_image_width: section.settings.logo_image_width,
@@ -23,14 +26,84 @@
       {{ 'icon-cart.svg' | inline_asset_content }}
     </a>
   </div>
+  <nav
+  id="mobile-menu"
+  class="mobile-menu"
+  aria-label="Mobile navigation">
+    <div class="mobile-menu__panel" role="dialog" aria-modal="true">
+        <ul class="mobile-menu__list">
+        {% for link in section.settings.menu.links %}
+          <li class="mobile-menu__item">
+            <a class="larger font-semi foreground" href="{{ link.url }}" class="mobile-menu__link">
+              {{ link.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="mobile-menu__header">
+        <button
+          class="menu-close"
+          id="menu_close"
+          type="button"
+          aria-label="Close navigation"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
 </header>
 
 {% stylesheet %}
-div:has(header){
-    box-shadow: 0 1px 4px #00000038;
-    background: var(--color-netural);
+  .mobile-menu{
+    position: absolute;
+    z-index: 101;
+    top: 5rem;
+    left: 0;
+    max-width: 300px;
+    min-width: 90%;
+    min-height: 100vh;
+    background: var(--color-section);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 10px 15px 10px 1px #00000038;
+    
+  }.mobile-menu__list,
+  .mobile-menu__panel{
     display: flex;
-}
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    transform: translateY(-50%);
+
+  }
+  .mobile-menu__list{
+    list-style: none;
+  }
+  .menu-close,
+  .menu-open{
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  a{
+    transition:  all .3s ease;
+  }
+ .mobile-menu__item a:hover{
+  color: var(--color-primary);
+  text-decoration: underline;
+
+ }
+  div:has(header){
+      box-shadow: 0 1px 4px #00000038;
+      background: var(--color-netural);
+      display: flex;
+  }
   header {
     height: 5rem;
     display: flex;
@@ -63,13 +136,36 @@ div:has(header){
     display: flex;
     gap: 1rem;
   }
+  .menu-open{
+    display: none;
+  }
   @media (max-width:600px){
     .header__menu{
       display: none !important;
     }
+    .menu-open{
+    display: block;
+  }
   }
  
 {% endstylesheet %}
+{% javascript %}
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuOpen = document.getElementById("menu_open");
+  const menuClose = document.getElementById("menu_close");
+
+  if (!mobileMenu || !menuOpen || !menuClose) return;
+
+  menuOpen.addEventListener("click", () => {
+    mobileMenu.style.display = "flex";
+  });
+
+  menuClose.addEventListener("click", () => {
+    mobileMenu.style.display = "none";
+  });
+});
+{% endjavascript %}
 
 {% schema %}
 {

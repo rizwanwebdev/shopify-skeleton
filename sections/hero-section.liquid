@@ -1,9 +1,10 @@
-<div class="hero-grid padding-block">
-<div class="hero-col-1">
+<div class="hero-grid padding-block  padding-inline">
+<div class="hero-col-1 hero-left">
     <h1>{{ section.settings.hero_heading_text }}</h1>
     <p>{{ section.settings.hero_heading_para }}</p>
     <div class="hero-star-rating">
-        <span>
+        <span class="hero_rating">
+          {% render 'stars', stars_numbers: 5 %}
           {{section.settings.hero_rating}}
         </span>
         <span class="hero-rating-icons">
@@ -19,7 +20,7 @@
       <a class="button bounce-top button-outline" href="{{ section.settings.hero_use_btn_link }}">{{ section.settings.hero_use_btn_text }}</a>
     </div>
 </div>
-<div class="hero-col-2">
+<div class="hero-col-2 hero-right">
     <div class="hero-img">
   {% if section.settings.hero_background_image %}
     {{ section.settings.hero_background_image
@@ -44,6 +45,12 @@
 
 </div>
 {% stylesheet %}
+    .hero_rating{
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+    }
     .hero-grid{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -150,41 +157,15 @@
     }
     @keyframes bounce-top {
     0% {
-     transform: translateY(-45px);
-      animation-timing-function: ease-in;
-      opacity: 1;
-    }
-    24% {
-      opacity: 1;
-    }
-    40% {
-     transform: translateY(-24px);
-      animation-timing-function: ease-in;
-    }
-    65% {
-      transform: translateY(-12px);
-      animation-timing-function: ease-in;
-    }
-    82% {
-      transform: translateY(-6px);
-      animation-timing-function: ease-in;
-    }
-    93% {
-      transform: translateY(-4px);
-      animation-timing-function: ease-in;
-    }
-    25%,
-    55%,
-    75%,
-    87% {
-      transform: translateY(0px);
-      animation-timing-function: ease-out;
-    }
-    100% {
-      transform: translateY(0px);
-      animation-timing-function: ease-out;
-      opacity: 1;
-    }
+    opacity: 0;
+    transform: translateX(-2000px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(30px);
+  }
+  80% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
   }
 
 
@@ -285,7 +266,7 @@
     "settings": {
       "hero_heading_text": "A Brighter, More Confident Smile — Made Simple",
       "hero_heading_para": "Reveal a noticeably whiter smile in just days with Smile Bright’s advanced whitening drops. Clean, gentle, and designed for effortless home use.",
-      "hero_rating":"⭐⭐⭐⭐⭐ 4.9/5 (2850 reviews)",
+      "hero_rating":"4.9/5 (2850 reviews)",
       "hero_shipping":"Free Shipping",
       "hero_recomended":"Denstist Recommended",
       "hero_product_btn_text":"Buy Now",

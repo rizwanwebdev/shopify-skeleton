@@ -4,6 +4,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 @font-face {
@@ -166,6 +167,8 @@ span {
 body {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-width: 100%;
   margin: 0;
   min-height: 100svh;
   overflow-x: hidden !important;
@@ -275,7 +278,7 @@ body {
     padding-block: var(--padding-block);
   }
   .padding-inline {
-    padding-inline: var(--padding-inline);
+    padding-inline: calc(var(--padding-inline) / 2);
   }
 }
 .shopify-section {
@@ -464,7 +467,12 @@ hr {
     transform: translateX(0);
   }
 }
-
+.hero-left {
+  animation: slide-right 1s ease both;
+}
+.hero-right {
+  animation: slide-left 1s ease both;
+}
 @keyframes slide-right {
   0% {
     opacity: 0;
