@@ -1,5 +1,6 @@
-<div class="faq-sec padding-block padding-inline flex-col">
-     <div class="sec-heading">
+<div class="faq-sec padding-inline flex-col">
+    <div class="faq-inner padding-block">
+       <div class="sec-heading">
       <h2>{{ section.settings.heading }}</h2>
       <p>{{ section.settings.heading_para }}</p>
     </div>
@@ -14,6 +15,7 @@
             </div>
             
         {% endfor %}
+    </div>
     </div>
 </div>
 {% stylesheet %}
@@ -49,15 +51,8 @@
         padding: 1em 0 ;
     }
 
-    /* div:has(.faq-sec){
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    } */
     .faq-sec{
         width:100%;
-        padding: 20px;
     }
     .faq-block,
     .faq-row{
@@ -72,9 +67,14 @@
         padding:20px 20px 12px 20px ;
         border-radius: 12px;
     }
+    .faq-inner{
+      display: flex;
+      flex-direction: column;
+      gap: var(--section-gap);
+    }
     @media (min-width:900px){
-        .faq-sec{
-            width: 85%;
+        .faq-inner{
+            width: 85% !important;
         }
     }
 

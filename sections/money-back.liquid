@@ -1,11 +1,14 @@
-<div class="money-back padding-inline padding-block">
+<div class="money-back flex-col padding-inline padding-block">
+    <div class="back-inner">
         {% render 'icon', name: 'shield', size: 80 %}
         <h2>{{ section.settings.heading }}</h2>
         <p class="large">{{ section.settings.info }}</p>
         <a class="button button-solid" href="{{ section.settings.product.url }}">{{ section.settings.btn_text }}</a>
+    </div>
 </div>
 {% stylesheet %}
-    .money-back{
+    .back-inner{
+        width: 80%;
         background: var(--color-card);
         border: 2px solid var(--color-border);
         border-radius: 16px;

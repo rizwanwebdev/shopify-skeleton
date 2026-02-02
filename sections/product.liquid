@@ -7,77 +7,78 @@
 
 <div class="product-sec padding-inline padding-block">
     <div class="product-images">
-      <div class="featured-image">
-        {% render 'image', class: 'product-image', width: 700, image: product.featured_image %}
-      </div>
-      <div class="sub-images">
-        {% for image in product.images %}
-        {% render 'image', class: 'sub-product-image', image: image %}
-       {% endfor %}
-      </div>
-    </div>
+  <div class="featured-image">
+    <img
+      id="featuredProductImage"
+      src="{{ product.featured_image | image_url: width: 700 }}"
+      alt="{{ product.title }}" width="700" height="700"
+    >
+  </div>
+
+  <div class="sub-images">
+    {% for image in product.images %}
+      <img
+         class="sub-product-image{% if image.id == product.featured_image.id %} is-active{% endif %}"
+        src="{{ image | image_url: width: 150 }}"
+        data-large="{{ image | image_url: width: 700 }}"
+        alt="{{ product.title }}" width="150" height="150"
+      >
+    {% endfor %}
+  </div>
+</div>
+
 
     <div class="product-details">
       <div class="product-info">
         <h1>{{ product.title }}</h1>
-        <p class="small">{% render 'stars', stars_numbers: 5 %}
-          (2847 reviews)
+        <p class="small flex-row">{% render 'stars', stars_numbers: 5 %}
+          {{ section.settings.star_review }}
         </p>
         <div class="product-prices">
-          <p class="bold h4">{{ product.price | money }}</p>
-          <p class="larger line-through">$299</p>
-          <span class="small primary">Save 50%</span>
+          <p class="bold h2 danger">{{ product.price | money }}</p>
+          {% if product.compare_at_price > product.price %}
+          <p class="larger line-through">{{ product.compare_at_price | money }}</p>
+        {% endif %}
+          {% comment %} <span class="small primary font-semi">Save {{ percent_save }}</span> {% endcomment %}
         </div>
         <p>{{ product.description }}</p>
       </div>
       <div class="product-included">
         <h6>What's Included</h6>
         <ul>
-          <li>{% render 'icon', name: 'shield', size: 20 %} <p>Professional whiting results in 7 days</p></li>
+          {% for block in section.blocks %}
+            <li class="flex-row">{% render 'icon', name: block.settings.i_icon %} <p class="smaller foreground">{{ block.settings.text }}</p></li>
+          {% endfor %}
         </ul>
 
       </div>
 
       <div class="product-form">
         {% form 'product', product %}
-          {% assign current_variant = product.selected_or_first_available_variant %}
 
-          <select name="id">
-            {% for variant in product.variants %}
-              <option
-                value="{{ variant.id }}"
-                {% if variant == current_variant %}
-                  selected="selected"
-                {% endif %}
-              >
-                {{ variant.title }} - {{ variant.price | money }}
-              </option>
-            {% endfor %}
-          </select>
-          {% if section.settings.show_quantity %}
-            <input type="text" name="quantity" min="1" value="1">
+          {% if section.settings.show_add_to_cart %}
+            <button type="submit" class="button button-outline">
+              Add to cart
+            </button>
           {% endif %}
-
-
-          <input type="submit" value="Add to cart">
           {{ form | payment_button }}
         {% endform %}
       </div>
-      <div class="text-cion">
+      <div class="text-icon">
         <div>
-          {% render 'icon', name: 'shield', size: 20 %}
+          {% render 'icon', name: 'shield' %}
           <p>Money back Guarantee</p>
         </div>
         <div>
-          {% render 'icon', name: 'truck', size: 20 %}
+          {% render 'icon', name: 'truck' %}
           <p>Free Shipping</p>
         </div>
         <div>
-          {% render 'icon', name: 'award', size: 20 %}
+          {% render 'icon', name: 'award' %}
           <p>FDA Approved</p>
         </div>
         <div>
-          {% render 'icon', name: 'card', size: 20 %}
+          {% render 'icon', name: 'card' %}
           <p>Cash-On Delievry</p>
         </div>
 
@@ -90,32 +91,74 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
+  .product-prices,
+  .text-icon > div,
+  .flex-row{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+  }
+  .product-details,
+  .product-included,
+  .product-info,
+  .product-images{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
   .featured-image{
     display: flex;
     flex-direction: column;
     gap: 24px;
+    border-radius: 16px;
+    border: 2px solid var(--color-border);
+    overflow: hidden;
+
   }
   .sub-images{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 16px;
+    overflow: hidden;
+  }.sub-product-image{
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    cursor: pointer;
   }
-  .product-prices{
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-  } 
+  .sub-product-image.is-active {
+    border-color: var(--color-primary);
+  }
+  #featuredProductImage {
+    transition: opacity 0.2s ease;
+  }
+ 
   .product-prices span{
     background: var(--color-card);
     border-radius: 40px;
+    padding: 2px 6px;
+    border: 1px solid var(--color-border);
   }
   .product-included{
     padding: 16px;
+    border-radius: 8px;
     border: 1px solid var(--color-border);
     background: var(--color-section);
   }
   .product-included ul{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     list-style: none;
+  }
+  .product-included svg{
+    min-width: 16px;
+    min-height: 16px;
+  }
+  .text-icon{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
   @media screen and (max-width:767px){
      .product-sec{
@@ -123,71 +166,103 @@
      }
   }
 {% endstylesheet %}
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', () => {
+    const featuredImage = document.getElementById('featuredProductImage');
+    const thumbnails = document.querySelectorAll('.sub-product-image');
+
+    if (!featuredImage || !thumbnails.length) return;
+
+    thumbnails.forEach((thumb) => {
+      thumb.addEventListener('click', () => {
+        featuredImage.style.opacity = 0;
+          featuredImage.src = thumb.dataset.large;
+          featuredImage.style.opacity = 1;
+        thumbnails.forEach(t => t.classList.remove('is-active'));
+        thumb.classList.add('is-active');
+      });
+    });
+  });
+{% endjavascript %}
 {% schema %}
-{
-  "name": "t:general.product",
-  "settings": [
-    {
-      "type": "text",
-      "id": "star_review",
-      "label": "Star Reviews"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_quantity",
-      "label": "Show Quantity Picker", 
-      "default": true
-    }
-  ],"blocks": [
-    {
-      "type": "included",
-      "name":"Include",
-      "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "t:labels.text"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Product Details",
-      "settings": {
-        "star_review":"(2847 reviews)"
+  {
+    "name": "t:general.product",
+    "settings": [
+      {
+        "type": "text",
+        "id": "star_review",
+        "label": "Star Reviews"
       },
-      "blocks": [
-        {
-          "type": "included",
-          "settings": {
-            "text":"Professional whiting results in 7 days"
+      {
+        "type": "checkbox",
+        "id": "show_add_to_cart",
+        "label": "Show Add to cart", 
+        "default": false
+      }
+    ],"blocks": [
+      {
+        "type": "included",
+        "name":"Include",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "t:labels.text"
+          },{
+            "type": "select",
+            "id": "i_icon",
+            "label": "Pick Icon",
+            "options": [
+              {"value": "star", "label": "Star"},
+              {"value": "truck", "label": "Truck"},
+              {"value": "heart", "label": "Heart"},
+              {"value": "dollar", "label": "Dollar"},
+              {"value": "award", "label": "Award"},
+              {"value": "message", "label": "Message"},
+              {"value": "circle-check", "label": "Circle Check"},
+              {"value": "clock", "label": "Clock"}
+            ]
           }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Details",
+        "settings": {
+          "star_review":"(2847 reviews)"
+        },
+        "blocks": [
+          {
+            "type": "included",
+            "settings": {
+              "text":"High-Quality Ingredients"
+            }
 
-        },{
-          "type": "included",
-          "settings": {
-            "text":"Professional whiting results in 7 days"
+          },{
+            "type": "included",
+            "settings": {
+              "text":"Crystal-White Results in 3–7 Days"
+            }
+
+          },{
+            "type": "included",
+            "settings": {
+              "text":"Cash on Delivery Across Pakistan"
+            }
+
+          },{
+            "type": "included",
+            "settings": {
+              "text":"Fast WhatsApp Support"
+            }
+
           }
-
-        },{
-          "type": "included",
-          "settings": {
-            "text":"Professional whiting results in 7 days"
-          }
-
-        },{
-          "type": "included",
-          "settings": {
-            "text":"Professional whiting results in 7 days"
-          }
-
-        }
-      ]
+        ]
+      }
+    ],
+    "disabled_on": {
+      "groups": ["header", "footer"]
     }
-  ],
-  "disabled_on": {
-    "groups": ["header", "footer"]
   }
-}
 {% endschema %}

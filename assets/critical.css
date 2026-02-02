@@ -316,7 +316,7 @@ body {
   font-size: 14px;
 }
 .smaller {
-  font-size: 12px;
+  font-size: 13px;
 }
 .font-semi {
   font-weight: var(--font-primary-weight-bold);
@@ -382,6 +382,8 @@ hr {
   text-decoration: none;
   transition: 0.3s ease all;
   z-index: 1;
+  width: fit-content;
+  cursor: pointer;
 }
 @media (max-width: 400px) {
   .button {
