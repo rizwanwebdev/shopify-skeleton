@@ -30,7 +30,7 @@
 
     <div class="product-details">
       <div class="product-info">
-        <h2>{{ product.title }}</h2>
+        <h1 class="product-title h2">{{ product.title }}</h1>
         <p class="small flex-row">{% render 'stars', stars_numbers: 5 %}
           {{ section.settings.star_review }}
         </p>
@@ -104,7 +104,6 @@
         </ul>
 
       </div>
-      <p>{{ product.description }}</p>
       <div class="text-icon">
         <div>
           {% render 'icon', name: 'shield' %}
@@ -122,8 +121,9 @@
           {% render 'icon', name: 'card' %}
           <p>Cash-On Delievry</p>
         </div>
-
       </div>
+      <p>{{ product.description }}</p>
+      
     </div>
   </div>
 {% stylesheet %}
@@ -326,6 +326,9 @@
   @media screen and (max-width:767px){
      .product-sec{
       grid-template-columns: 1fr;
+     }
+     .product-title{
+      font-size: 1.375rem;
      }
   }
 {% endstylesheet %}
