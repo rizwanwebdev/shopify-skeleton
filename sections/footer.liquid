@@ -45,8 +45,8 @@
     </div>
     <div class="footer_flex">
       <h5 class="netural">Contact Us</h5>
-      <p>Email: {{ section.settings.email }}</p>
-      <p>Phone: {{ section.settings.phone }}</p>
+      <a href="mailto:{{ section.settings.email }}">Email: {{ section.settings.email }}</a>
+      <a href="tel:{{ section.settings.phone }}">Phone: {{ section.settings.phone }}</a>
       <p>Hours: {{ section.settings.working_hours }}</p>
     </div>
   </div>
