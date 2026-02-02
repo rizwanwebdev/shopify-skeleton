@@ -4,7 +4,7 @@
         <p class="larger netural">{{ section.settings.heading_para }}</p>
     </div>
     <div class="price-card">
-        <p  class="larger center"><span class="netural">{{ section.settings.price_linethrough }}</span> <span class="netural h2 bold center">{{ section.settings.price }}</span></p>
+        <p  class="larger center"><span class="netural larger line-through">{{ section.settings.price_linethrough }}</span> <span class="netural h2 bold center">{{ section.settings.price }}</span></p>
         <p  class=" netural center">{{ section.settings.price_off }}</p>
         <p class="small netural center">{{ section.settings.offer_ends }}</p>
     </div>
@@ -22,7 +22,7 @@
 
     .cta-sec{
         width: 100%;
-        background: linear-gradient(135deg, var(--color-primary) 0%,var(--color-card) 100%);
+        background: linear-gradient(135deg, var(--color-primary) 0%,var(--color-body-text) 100%);
     }
     .price-card{
         display: flex;
@@ -30,8 +30,9 @@
         gap: 8px;
         border: 1px solid var(--color-border);
         padding: 20px;
-        background: transparent;
+        background: var(--color-primary);
         backdrop-filter: blur(12px);
+        border-radius: 8px;
     }
     .price-card:first-child{
         display: flex;
@@ -40,6 +41,22 @@
         justify-content: center;
         align-items: center;
     }
+    .cta-extra{
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        align-items: center;
+    }
+    .cta-extra p{
+        display: flex;
+        align-items: start;
+        gap: 8px;
+    }
+    .cta-extra svg{
+        min-width: 18px !important;
+        min-height: 18px !important;
+    }
+
 {% endstylesheet %}
 {% schema %}
     {
@@ -66,10 +83,9 @@
                 "label": "Price"
             },
             {
-                "type": "number",
+                "type": "text",
                 "id": "price_off",
                 "label": "Price Off",
-                "default":35
             },
             {
                 "type": "text",

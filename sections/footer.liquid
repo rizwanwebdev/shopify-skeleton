@@ -45,12 +45,11 @@
     </div>
     <div class="footer_flex">
       <h5 class="netural">Contact Us</h5>
-      <p>Email:</p>
-      <p>Phone:</p>
-      <p>Hours:</p>
+      <p>Email: {{ section.settings.email }}</p>
+      <p>Phone: {{ section.settings.phone }}</p>
+      <p>Hours: {{ section.settings.working_hours }}</p>
     </div>
   </div>
-  <hr>
   <div class="footer_bottom">
       <div class="footer__copyright">
       &copy;
@@ -71,10 +70,9 @@
 {% stylesheet %}
 
   footer {
-    padding-top: 3rem;
+    padding-block: 3rem;
     width: 100%;
     background: var(--color-footer);
-
   }
   footer a {
     text-decoration: none;
@@ -170,11 +168,30 @@
       "max": 500,
       "step": 5,
       "default":150
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "working_hours",
+      "label": "Working Hours"
     }
   ],"presets": [
     {
       "name": "Footer",
-      "settings": {}
+      "settings": {
+        "email":"contact@gmail.com",
+        "phone":"+923695845-test",
+        "working_hours":"Mon-Fri, 9AM - 6PM EST"
+      }
     }
   ]
 }

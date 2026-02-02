@@ -415,6 +415,9 @@ hr {
 .button-outline {
   color: var(--color-primary);
 }
+.button-outline {
+  background: var(--color-netural);
+}
 .button-solid,
 .button-outline:hover,
 .button-outline:focus {
