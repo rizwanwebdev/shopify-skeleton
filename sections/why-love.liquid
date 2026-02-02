@@ -1,0 +1,85 @@
+<div class="prod-why-sec padding-inline padding-block flex-col">
+    <h2>{{ section.settings.heading }}</h2>
+    <div class="why-grid">
+        {% for block in section.blocks %}
+            <div>
+                <h4>{{ block.settings.title }}</h4>
+                <p class="small">{{ block.settings.info }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% stylesheet %}
+    .why-grid{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+    .why-grid div{
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        background-color: var(--color-netural);
+    }
+{% endstylesheet %}
+{% schema %}
+    {
+        "name": "Why Love?",
+        "settings": [
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "t:labels.heading"
+            }
+        ],"blocks": [
+            {
+                "name":"block",
+                "type": "why_buy",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "t:labels.title"
+                    },{
+                        "type": "text",
+                        "id": "info",
+                        "label": "t:labels.info"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Why Love?",
+                "settings": {
+                    "heading":"Why You'll Love SmileBright"
+                },
+                "blocks": [
+                    {
+                        "type": "why_buy",
+                        "settings": {
+                            "title":"Whitening Power",
+                            "info":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ea tempora consequatur veniam, mollitia modi!"
+                        }
+                    },
+                    {
+                        "type": "why_buy",
+                        "settings": {
+                            "title":"Whitening Power",
+                            "info":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ea tempora consequatur veniam, mollitia modi!"
+                        }
+                    },{
+                        "type": "why_buy",
+                        "settings": {
+                            "title":"Whitening Power",
+                            "info":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ea tempora consequatur veniam, mollitia modi!"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

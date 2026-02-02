@@ -1,28 +1,44 @@
 <div class="cta-sec padding-block padding-inline flex-col">
      <div class="sec-heading">
-        <h2 class="h1 netural">{{ section.settings.sec_heading }}</h2>
-        <p class="larger netural">{{ section.settings.sec_heading_para }}</p>
+        <h2 class="h1 netural">{{ section.settings.heading }}</h2>
+        <p class="larger netural">{{ section.settings.heading_para }}</p>
     </div>
     <div class="price-card">
-        <p  class="largercenter"><span class="netural">$299</span> <span class="netural h2 bold center">$149</span></p>
-        <p  class=" netural center">Limited time offer - 50% off</p>
-        <p class="small netural center">Offer end in 48 hours</p>
+        <p  class="larger center"><span class="netural">{{ section.settings.price_linethrough }}</span> <span class="netural h2 bold center">{{ section.settings.price }}</span></p>
+        <p  class=" netural center">{{ section.settings.price_off }}</p>
+        <p class="small netural center">{{ section.settings.offer_ends }}</p>
     </div>
-    <button class="get-cta">
-        Get SmileBright Now
-    </button>
+    <a href="{{ section.settings.cta_product.url }}" class="button button-solid">
+        {{ section.settings.cta_text }}
+    </a>
     <div class="cta-extra">
-        <p class="netural"><span>shield</span> money back guaranter</p>
-        <p class="netural"><span>truck</span> money back guaranter</p>
-        <p class="netural"><span>clock</span> money back guaranter</p>
+        <p class="netural"><span>{% render 'icon', name: 'shield', size: 20, color: '#fff' %}</span>{{ section.settings.money_back }}</p>
+        <p class="netural"><span>{% render 'icon', name: 'truck', size: 20, color: '#fff' %}</span>{{ section.settings.free_shipping }}</p>
+        <p class="netural"><span>{% render 'icon', name: 'clock', size: 20, color: '#fff' %}</span>{{ section.settings.shipping_duration }}</p>
     </div>
-    <p class="center netural">⚡ Only 47 units left in stock</p>
+    <p class="center netural">{{ section.settings.in_stock }}</p>
 </div>
 {% stylesheet %}
 
     .cta-sec{
         width: 100%;
         background: linear-gradient(135deg, var(--color-primary) 0%,var(--color-card) 100%);
+    }
+    .price-card{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        border: 1px solid var(--color-border);
+        padding: 20px;
+        background: transparent;
+        backdrop-filter: blur(12px);
+    }
+    .price-card:first-child{
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
     }
 {% endstylesheet %}
 {% schema %}
@@ -31,21 +47,81 @@
         "settings": [
             {
                 "type": "text",
-                "id": "sec_heading",
+                "id": "heading",
                 "label": "t:labels.heading"
             },
             {
                 "type": "text",
-                "id": "sec_heading_para",
+                "id": "heading_para",
                 "label": "t:labels.heading_para"
+            },
+            {
+                "type": "text",
+                "id": "price_linethrough",
+                "label": "Price Cuted"
+            },
+            {
+                "type": "text",
+                "id": "price",
+                "label": "Price"
+            },
+            {
+                "type": "number",
+                "id": "price_off",
+                "label": "Price Off",
+                "default":35
+            },
+            {
+                "type": "text",
+                "id": "offer_ends",
+                "label": "Offer End"
+            },
+            {
+                "type": "text",
+                "id": "cta_text",
+                "label": "Button Text",
+            },
+            {
+                "type": "product",
+                "id": "cta_product",
+                "label": "Product",
+            },
+            {
+                "type": "text",
+                "id": "money_back",
+                "label": "Money Back",
+            },
+            {
+                "type": "text",
+                "id": "free_shipping",
+                "label": "Free Shipping",
+            },
+            {
+                "type": "text",
+                "id": "shipping_duration",
+                "label": "Shipping Duration",
+            },
+            {
+                "type": "text",
+                "id": "in_stock",
+                "label": "In Stock",
             }
         ],
         "presets": [
             {
                 "name": "Call To Action",
                 "settings": {
-                    "sec_heading":"Transform Your Smile Today",
-                    "sec_heading_para":"Join thousands who've discovered professional level teeth cleaning at home",
+                    "heading":"Transform Your Smile Today",
+                    "heading_para":"Join thousands who've discovered professional level teeth cleaning at home",
+                    "price_linethrough":"$299",
+                    "price":"$149",
+                    "price_off":"Limited time offer - 50% off",
+                    "offer_ends":"Offer end in 48 hours",
+                    "cta_text":"Get SmileBright Now",
+                    "money_back":"30-Day Money-Back Guarantee",
+                    "free_shipping":"Free Shipping",
+                    "shipping_duration":"Ships in 24 Hours",
+                    "in_stock":"⚡ Only 47 units left in stock",
                 }
             }
         ]

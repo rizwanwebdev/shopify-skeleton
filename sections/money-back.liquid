@@ -1,0 +1,63 @@
+<div class="money-back padding-inline padding-block">
+        {% render 'icon', name: 'shield', size: 80 %}
+        <h2>{{ section.settings.heading }}</h2>
+        <p class="large">{{ section.settings.info }}</p>
+        <a class="button button-solid" href="{{ section.settings.product.url }}">{{ section.settings.btn_text }}</a>
+</div>
+{% stylesheet %}
+    .money-back{
+        background: var(--color-card);
+        border: 2px solid var(--color-border);
+        border-radius: 16px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+
+{% endstylesheet %}
+{% schema %}
+    {
+        "name": "Real Results",
+        "settings": [
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "t:labels.heading"
+            },
+            {
+                "type": "text",
+                "id": "info",
+                "label": "t:labels.info"
+            },
+            {
+                "type": "text",
+                "id": "btn_text",
+                "label": "t:labels.text"
+            },
+            {
+                "type": "product",
+                "id": "product",
+                "label": "t:labels.product"
+            }
+        ],
+        "locales": {
+            "en":{
+                "product":"Product"
+            }
+
+        }
+        ,
+        "presets": [
+            {
+                "name": "Money Back",
+                "settings": {
+                    "heading":"30-Day Money Back Guarantee",
+                    "info":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis reiciendis nobis praesentium commodi optio velit nostrum totam eveniet, amet saepe!"
+                }
+            }
+        ]
+    }
+{% endschema %}

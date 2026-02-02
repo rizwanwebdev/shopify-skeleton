@@ -280,23 +280,15 @@ body {
   }
 }
 .shopify-section {
-  --content-width: min(
-    calc(var(--page-width) - var(--page-margin) * 2),
-    calc(100% - var(--page-margin) * 2)
-  );
-  --content-margin: minmax(var(--page-margin), 1fr);
-  --content-grid: var(--content-margin) var(--content-width)
-    var(--content-margin);
-
   /* This is required to make <img> elements work as background images */
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   width: 100%;
 }
-.shopify-section > div {
-  min-width: 100%;
+.shopify-section > div,
+.shopify-section > header,
+.shopify-section > footer {
+  width: 100%;
 }
 .danger {
   color: var(--color-danger);
@@ -335,9 +327,13 @@ body {
 .center {
   text-align: center;
 }
+.line-through {
+  text-decoration: line-through;
+}
 hr {
   border: 0;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-card);
+  width: 100%;
 }
 /* ***********************Gloabl  section setting */
 .sec-heading {

@@ -1,39 +1,144 @@
-<footer>
-  <div class="footer__copyright">
-    &copy;
-    {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
+<footer class="padding-inline flex-col">
+  <div class="exta-icons">
+    <div>
+      {% render 'icon', name: 'shield', size: 30 %}
+      <p class="small font-semi">30-Day Guarantee</p>
+    </div>
+    <div>
+      {% render 'icon', name: 'award', size: 30 %}
+      <p class="small font-semi">30-Day Guarantee</p>
+    </div>
+    <div>
+      {% render 'icon', name: 'truck', size: 30 %}
+      <p class="small font-semi">30-Day Guarantee</p>
+    </div>
+    <div>
+      {% render 'icon', name: 'card', size: 30 %}
+      <p class="small font-semi">30-Day Guarantee</p>
+    </div>
   </div>
-
-  <div class="footer__links">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
-
-  <div class="footer__payment">
-    {% if section.settings.show_payment_icons %}
-      {% for type in shop.enabled_payment_types %}
-        {{ type | payment_type_svg_tag }}
+  <hr>
+  <div class="footer-grid">
+    <div class="footer_flex">
+      
+      {% if section.settings.footer_logo %}
+        {{ section.settings.footer_logo | image_url: width: section.settings.footer_logo_size
+          | image_tag:
+            alt: shop.name,
+            loading: 'lazy'
+        }}
+      {% else %}
+        <span class="netural h3 font-semi">{{ shop.name }}</span>
+      {% endif %}
+    
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel, nam?</p>
+    </div>
+    <div class="footer_flex">
+      <h5 class="netural">Quick Links</h5>
+    <ul class="footer-menu">
+      {% for link in section.settings.menu.links %}
+       <li>
+        <span>&#8594;</span>
+        {{ link.title | link_to: link.url }} </li>
       {% endfor %}
-    {% endif %}
+    </ul>
+    </div>
+    <div class="footer_flex">
+      <h5 class="netural">Contact Us</h5>
+      <p>Email:</p>
+      <p>Phone:</p>
+      <p>Hours:</p>
+    </div>
+  </div>
+  <hr>
+  <div class="footer_bottom">
+      <div class="footer__copyright">
+      &copy;
+      {{ 'now' | date: '%Y' }}
+      {{ shop.name | link_to: routes.root_url }} | All Rights Reserved
+    </div>
+
+    <div class="footer__payment">
+      {% if section.settings.show_payment_icons %}
+        {% for type in shop.enabled_payment_types %}
+          {{ type | payment_type_svg_tag }}
+        {% endfor %}
+      {% endif %}
+    </div>
   </div>
 </footer>
 
 {% stylesheet %}
+
   footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
+    padding-top: 3rem;
+    width: 100%;
+    background: var(--color-footer);
+
   }
   footer a {
     text-decoration: none;
-    color: var(--color-foreground);
+    color: var(--color-neutral);
+  }footer a:hover{
+    color: var(--color-primary);
+
+  }
+  .footer-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
   footer .footer__links,
   footer .footer__payment {
     display: flex;
     gap: 1rem;
+  }
+  .footer_flex{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .footer-menu{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 8px;
+  }.footer-menu li{
+    display: flex;
+    gap: 8px;
+  }
+  .footer_bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
+  }.exta-icons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:16px;
+    width: 100%;
+  }.exta-icons div{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-menu li span{
+    transition: all .3s;
+  }
+  .footer-menu li:has(a:hover) span {
+  color: var(--color-neutral);
+  transform: translateX(5px);
+  }
+  @media screen and (max-width:767px){
+    .footer-grid{
+      grid-template-columns: 1fr;
+    }
+    .exta-icons{
+    grid-template-columns: repeat(2, 1fr);
+    }
   }
 {% endstylesheet %}
 
@@ -51,6 +156,25 @@
       "id": "show_payment_icons",
       "label": "t:labels.show_payment_icons",
       "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Footer Logo"
+    },
+    {
+      "type": "range",
+      "id": "footer_logo_size",
+      "label": "Logo Size",
+      "min": 30,
+      "max": 500,
+      "step": 5,
+      "default":150
+    }
+  ],"presets": [
+    {
+      "name": "Footer",
+      "settings": {}
     }
   ]
 }

@@ -5,46 +5,187 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/product
 {% endcomment %}
 
-<div class="product-images">
-  {% for image in product.images %}
-    {% render 'image', class: 'product-image', image: image %}
-  {% endfor %}
-</div>
+<div class="product-sec padding-inline padding-block">
+    <div class="product-images">
+      <div class="featured-image">
+        {% render 'image', class: 'product-image', width: 700, image: product.featured_image %}
+      </div>
+      <div class="sub-images">
+        {% for image in product.images %}
+        {% render 'image', class: 'sub-product-image', image: image %}
+       {% endfor %}
+      </div>
+    </div>
 
-<div class="product-info">
-  <h1>{{ product.title }}</h1>
-  <p>{{ product.price | money }}</p>
-  <p>{{ product.description }}</p>
-</div>
+    <div class="product-details">
+      <div class="product-info">
+        <h1>{{ product.title }}</h1>
+        <p class="small">{% render 'stars', stars_numbers: 5 %}
+          (2847 reviews)
+        </p>
+        <div class="product-prices">
+          <p class="bold h4">{{ product.price | money }}</p>
+          <p class="larger line-through">$299</p>
+          <span class="small primary">Save 50%</span>
+        </div>
+        <p>{{ product.description }}</p>
+      </div>
+      <div class="product-included">
+        <h6>What's Included</h6>
+        <ul>
+          <li>{% render 'icon', name: 'shield', size: 20 %} <p>Professional whiting results in 7 days</p></li>
+        </ul>
 
-<div class="product-form">
-  {% form 'product', product %}
-    {% assign current_variant = product.selected_or_first_available_variant %}
+      </div>
 
-    <select name="id">
-      {% for variant in product.variants %}
-        <option
-          value="{{ variant.id }}"
-          {% if variant == current_variant %}
-            selected="selected"
+      <div class="product-form">
+        {% form 'product', product %}
+          {% assign current_variant = product.selected_or_first_available_variant %}
+
+          <select name="id">
+            {% for variant in product.variants %}
+              <option
+                value="{{ variant.id }}"
+                {% if variant == current_variant %}
+                  selected="selected"
+                {% endif %}
+              >
+                {{ variant.title }} - {{ variant.price | money }}
+              </option>
+            {% endfor %}
+          </select>
+          {% if section.settings.show_quantity %}
+            <input type="text" name="quantity" min="1" value="1">
           {% endif %}
-        >
-          {{ variant.title }} - {{ variant.price | money }}
-        </option>
-      {% endfor %}
-    </select>
 
-    <input type="text" name="quantity" min="1" value="1">
 
-    <input type="submit" value="Add to cart">
-    {{ form | payment_button }}
-  {% endform %}
-</div>
+          <input type="submit" value="Add to cart">
+          {{ form | payment_button }}
+        {% endform %}
+      </div>
+      <div class="text-cion">
+        <div>
+          {% render 'icon', name: 'shield', size: 20 %}
+          <p>Money back Guarantee</p>
+        </div>
+        <div>
+          {% render 'icon', name: 'truck', size: 20 %}
+          <p>Free Shipping</p>
+        </div>
+        <div>
+          {% render 'icon', name: 'award', size: 20 %}
+          <p>FDA Approved</p>
+        </div>
+        <div>
+          {% render 'icon', name: 'card', size: 20 %}
+          <p>Cash-On Delievry</p>
+        </div>
 
+      </div>
+    </div>
+  </div>
+{% stylesheet %}
+  .product-sec{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .featured-image{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .sub-images{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .product-prices{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  } 
+  .product-prices span{
+    background: var(--color-card);
+    border-radius: 40px;
+  }
+  .product-included{
+    padding: 16px;
+    border: 1px solid var(--color-border);
+    background: var(--color-section);
+  }
+  .product-included ul{
+    list-style: none;
+  }
+  @media screen and (max-width:767px){
+     .product-sec{
+      grid-template-columns: 1fr;
+     }
+  }
+{% endstylesheet %}
 {% schema %}
 {
   "name": "t:general.product",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "star_review",
+      "label": "Star Reviews"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quantity",
+      "label": "Show Quantity Picker", 
+      "default": true
+    }
+  ],"blocks": [
+    {
+      "type": "included",
+      "name":"Include",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:labels.text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Details",
+      "settings": {
+        "star_review":"(2847 reviews)"
+      },
+      "blocks": [
+        {
+          "type": "included",
+          "settings": {
+            "text":"Professional whiting results in 7 days"
+          }
+
+        },{
+          "type": "included",
+          "settings": {
+            "text":"Professional whiting results in 7 days"
+          }
+
+        },{
+          "type": "included",
+          "settings": {
+            "text":"Professional whiting results in 7 days"
+          }
+
+        },{
+          "type": "included",
+          "settings": {
+            "text":"Professional whiting results in 7 days"
+          }
+
+        }
+      ]
+    }
+  ],
   "disabled_on": {
     "groups": ["header", "footer"]
   }

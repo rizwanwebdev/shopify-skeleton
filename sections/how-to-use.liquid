@@ -1,0 +1,104 @@
+<div class="how-use padding-inline padding-block">
+    <h2>{{ section.settings.heading }}</h2>
+    <div class="use-grid">
+        {% for block in section.blocks %}
+            <div class="use-steps">
+                <span class="netural font-semi">{{forloop.index}}</span>
+                <h6>{{ block.settings.title }}</h6>
+                <p class="small">{{ block.settings.info }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% stylesheet %}
+    .how-use{
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        background: var(--color-card);
+    }
+    .use-grid{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 16px;
+    }
+    .use-steps{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+    }
+    .use-steps span{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        border-radius: 40px;
+        background: var(--color-primary);
+    }
+    @media screen and (max-width:767px){
+        .use-grid{
+            grid-template-columns: 1fr;
+        }
+    }
+{% endstylesheet %}
+{% schema %}
+    {
+        "name": "How to use",
+        "settings": [
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "t:labels.heading"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "use_steps",
+                "name":"step",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "t:labels.title"
+                    },{
+                        "type": "text",
+                        "id": "info",
+                        "label": "t:labels.info"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "How to use",
+                "settings": {
+                    "heading":"How to Use"
+                },
+                "blocks": [
+                    {
+                        "type": "use_steps",
+                        "settings": {
+                            "title":"Mix Drops",
+                            "info":"Mix few drops from both bottles"
+                        }
+                    },{
+                        "type": "use_steps",
+                        "settings": {
+                            "title":"Use Brush or Cotton",
+                            "info":"Scrub using brush or cotton"
+                        }
+                    },{
+                        "type": "use_steps",
+                        "settings": {
+                            "title":"Result",
+                            "info":"Try this consistently for few days and check results"
+                        }
+                    }
+
+                ]
+            }
+        ]
+    }
+{% endschema %}
