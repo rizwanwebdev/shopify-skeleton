@@ -53,17 +53,31 @@
 
       </div>
 
-      <div class="product-form">
-        {% form 'product', product %}
+      <div class="product-cod-form-wrapper">
+        <button id="buyNowBtn" class="button button-solid" 
+        data-title="{{ product.title | escape }}"
+        data-id="{{ product.id }}"
+        data-price="{{ product.price | money }}">
+         {% render 'icon',name: 'cart', size: 26 %}
+        Buy Now
+        </button>
 
-          {% if section.settings.show_add_to_cart %}
-            <button type="submit" class="button button-outline">
-              Add to cart
-            </button>
-          {% endif %}
-          {{ form | payment_button }}
-        {% endform %}
+        <!-- Hidden COD form -->
+        <div id="codForm" class="cod-popup hidden">
+          <div class="cod-popup-content">
+            <span id="closeCodForm" class="cod-close">&times;</span>
+            <h3>Cash On Delivery Details</h3>
+            <form id="codOrderForm">
+              <input type="text" name="name" placeholder="Full Name" required>
+              <input type="tel" name="phone" placeholder="Phone Number" required>
+              <input type="text" name="address" placeholder="Delivery Address" required>
+              <textarea name="notes" placeholder="Notes (optional)"></textarea>
+              <button type="submit" class="button button-outline">Place Order</button>
+            </form>
+          </div>
+        </div>
       </div>
+
       <div class="text-icon">
         <div>
           {% render 'icon', name: 'shield' %}
@@ -160,12 +174,62 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
+  /* ============cod-form=================== */
+  #buyNowBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  #buyNowBtn svg{
+    stroke: var(--color-netural);
+  }
+    #buyNowBtn svg:hover{
+    stroke: var(--color-primary);
+  }
+  .cod-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  }
+
+  .cod-popup.hidden {
+    display: none;
+  }
+
+  .cod-popup-content {
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+  }
+
+  .cod-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  /* ============cod-form=================== */
+
   @media screen and (max-width:767px){
      .product-sec{
       grid-template-columns: 1fr;
      }
   }
 {% endstylesheet %}
+
 {% javascript %}
   document.addEventListener('DOMContentLoaded', () => {
     const featuredImage = document.getElementById('featuredProductImage');
@@ -182,6 +246,47 @@
         thumb.classList.add('is-active');
       });
     });
+
+    const buyBtn = document.getElementById('buyNowBtn');
+  const codForm = document.getElementById('codForm');
+  const closeBtn = document.getElementById('closeCodForm');
+  const codOrderForm = document.getElementById('codOrderForm');
+
+  // Open COD popup
+  buyBtn.addEventListener('click', () => {
+    codForm.classList.remove('hidden');
+  });
+
+  // Close popup
+  closeBtn.addEventListener('click', () => {
+    codForm.classList.add('hidden');
+  });
+
+  // Submit COD form
+  codOrderForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Collect form data
+    const formData = new FormData(codOrderForm);
+    const buyBtn = document.getElementById('buyNowBtn');
+      buyBtn.addEventListener('click', () => {
+        const order = {
+          title: buyBtn.dataset.title,
+          id: buyBtn.dataset.id,
+          price: buyBtn.dataset.price
+        };
+        console.log('COD Order:', order);
+      });
+
+    console.log('COD Order Submitted:', order);
+
+    // For now just alert — later you can send to backend / email / Google Sheet
+    alert('Thank you! Your COD order has been received.');
+
+    // Close popup & reset form
+    codForm.classList.add('hidden');
+    codOrderForm.reset();
+  });
   });
 {% endjavascript %}
 {% schema %}
